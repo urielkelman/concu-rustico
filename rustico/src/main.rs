@@ -2,12 +2,15 @@ extern crate clap;
 
 mod player;
 mod coordinator;
+mod signed_card;
 
 use clap::{App, Arg};
-use std::sync::{mpsc, Barrier, Arc};
+use std::sync::{mpsc, Barrier, Arc, Mutex};
 use std::thread;
 use player::player;
 use coordinator::coordinator;
+use signed_card::SignedCard;
+
 
 fn check_player_quantity(players: i32) -> bool {
     return players >= 4 && players % 2 == 0
@@ -15,21 +18,24 @@ fn check_player_quantity(players: i32) -> bool {
 
 fn set_up_threads(players: i32) {
     let barrier = Arc::new(Barrier::new((players + 1) as usize));
-    let (tx, rx) = mpsc::channel();
+    let (tx_card, rx_card) = mpsc::channel();
+    let (tx_deck, rx_deck) = mpsc::channel();
+    let shared_rx_deck = Arc::new(Mutex::new(rx_deck));
 
     let mut threads = Vec::new();
 
-    for _ in 0..players {
-        let tx_clone = mpsc::Sender::clone(&tx);
+    for p in 0..players {
+        let tx_clone_player = mpsc::Sender::clone(&tx_card);
         let barrier_clone = barrier.clone();
+        let shared_rx_deck_clone = shared_rx_deck.clone();
         threads.push(thread::spawn(move || {
-            player(tx_clone, barrier_clone)
+            player(tx_clone_player, barrier_clone, shared_rx_deck_clone, p);
         }));
     }
 
 
     threads.push(thread::spawn(move || {
-        coordinator(players,rx, barrier)
+        coordinator(players, rx_card, barrier, tx_deck)
     }));
 
     for thread in threads {
