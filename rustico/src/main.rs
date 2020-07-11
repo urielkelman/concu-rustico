@@ -4,7 +4,7 @@ mod player;
 mod coordinator;
 
 use clap::{App, Arg};
-use std::sync::mpsc;
+use std::sync::{mpsc, Barrier, Arc};
 use std::thread;
 use player::player;
 use coordinator::coordinator;
@@ -14,19 +14,22 @@ fn check_player_quantity(players: i32) -> bool {
 }
 
 fn set_up_threads(players: i32) {
+    let barrier = Arc::new(Barrier::new((players + 1) as usize));
     let (tx, rx) = mpsc::channel();
 
     let mut threads = Vec::new();
 
     for _ in 0..players {
         let tx_clone = mpsc::Sender::clone(&tx);
+        let barrier_clone = barrier.clone();
         threads.push(thread::spawn(move || {
-            player(tx_clone)
+            player(tx_clone, barrier_clone)
         }));
     }
 
+
     threads.push(thread::spawn(move || {
-        coordinator(rx)
+        coordinator(players,rx, barrier)
     }));
 
     for thread in threads {
