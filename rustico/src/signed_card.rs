@@ -1,5 +1,6 @@
+use crate::cards::Card;
+
 pub struct SignedCard {
-    pub card: i32,
+    pub card: Card,
     pub player_signature: i32
 }
-

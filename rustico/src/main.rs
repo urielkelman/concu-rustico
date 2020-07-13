@@ -3,13 +3,13 @@ extern crate clap;
 mod player;
 mod coordinator;
 mod signed_card;
+mod cards;
 
 use clap::{App, Arg};
 use std::sync::{mpsc, Barrier, Arc, Mutex};
 use std::thread;
 use player::player;
 use coordinator::coordinator;
-use signed_card::SignedCard;
 
 
 fn check_player_quantity(players: i32) -> bool {
