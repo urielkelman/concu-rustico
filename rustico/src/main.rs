@@ -4,12 +4,20 @@ mod player;
 mod coordinator;
 mod signed_card;
 mod cards;
+mod logger;
+mod messages;
 
 use clap::{App, Arg};
 use std::sync::{mpsc, Barrier, Arc, Mutex};
 use std::thread;
 use player::player;
 use coordinator::coordinator;
+use std::fs::{self, File};
+use std::io::prelude::*;
+use std::io::LineWriter;
+use std::io::{Error, ErrorKind};
+use crate::logger::{create_logfile, debug, info, error, LogFile};
+use crate::messages::*;
 
 
 fn check_player_quantity(players: i32) -> bool {
@@ -43,7 +51,7 @@ fn set_up_threads(players: i32) {
     }
 }
 
-fn main() {
+fn main() -> std::io::Result<()> {
     let matches = App::new("Rustico simulation")
         .version("1.0")
         .arg(Arg::with_name("players")
@@ -52,18 +60,31 @@ fn main() {
             .help("Number of players to participate in the game.")
             .takes_value(true)
             .required(true))
+        .arg(Arg::with_name("debug")
+            .short("d")
+            .long("debug")
+            .help("Debug file")
+            .takes_value(true)
+            .required(false))
         .get_matches();
 
     let players: i32 = matches.value_of("players").unwrap().trim().parse().unwrap();
+    let mut logfile: LogFile = None;
+    if matches.is_present("debug") {
+        logfile = create_logfile(matches.value_of("debug").unwrap().to_string()).unwrap();
+        debug(logfile, LOGFILE_STARTED.to_string())?;
+    }
+
 
     if !check_player_quantity(players){
         println!("ERROR: Number of players should be greater or equal than four and divisible by two.");
-        return;
+        return Err(Error::new(ErrorKind::Other,
+                            "Number of players should be greater or equal than four and divisible by two."));
     }
 
     set_up_threads(players);
 
     println!("{}", players);
 
-    println!("Hello, world!");
+    return Ok(());
 }
