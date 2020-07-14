@@ -1,16 +1,17 @@
 use std::sync::mpsc::{Receiver, Sender};
-use std::sync::{Barrier, Arc};
+use std::sync::{Barrier, Arc, Mutex, Condvar};
 use std::collections::HashMap;
 
 use crate::signed_card::SignedCard;
 use crate::cards::{Card, random_full_deck};
+
+use crate::logger::{LogFile, info, debug, error};
 
 const FRENCH_DECK_SIZE :i32 = 52;
 
 const POINTS_FASTER_PLAYER :i32 = 1;
 const POINTS_SLOWER_PLAYER :i32 = -5;
 const POINTS_MAX_CARD :i32 = 10;
-
 
 fn deal_cards_to_players(players: i32, tx_deck: Sender<Vec<Card>>) -> (i32, i32){
     let deck_size = FRENCH_DECK_SIZE / players;
@@ -53,45 +54,92 @@ fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HashMap<i3
     signed_cards.sort_by(|a, b| a.card.number.cmp(&b.card.number));
 
     let max_card: Card = signed_cards.last().unwrap().card;
-    for i in (0..signed_cards.len()).rev() {
-        if signed_cards[i].card.number == max_card.number {
-            points_by_user.insert(signed_cards[i].player_signature, POINTS_MAX_CARD);
-        } else {
-            break;
-        }
+    let mut i = signed_cards.len() - 1;
+    while i >= 0 && signed_cards[i].card.number == max_card.number {
+        points_by_user.insert(signed_cards[i].player_signature, POINTS_MAX_CARD);
+        i-=1;
     }
 
     return points_by_user;
 }
 
-fn calculate_rustic_hand_points(signed_cards: Vec<SignedCard>) -> HashMap<i32, i32> {
-    let mut points_by_user = empty_points_map(signed_cards.len() as i32);
+fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>){
+    for (user, points ) in points_by_user {
+        debug(logfile.clone(), format!("El jugador con id {} posee {} puntos.", user, points));
+    }
+}
 
-    points_by_user.insert(signed_cards.first().unwrap().player_signature, POINTS_FASTER_PLAYER);
-    points_by_user.insert(signed_cards.last().unwrap().player_signature, POINTS_SLOWER_PLAYER);
+
+fn calculate_rustic_hand_points(logfile: LogFile, signed_cards: Vec<SignedCard>) -> (HashMap<i32, i32>, i32) {
+    let mut rustic_hand_points = empty_points_map(signed_cards.len() as i32);
+
+    let first_player = signed_cards.first().unwrap();
+    rustic_hand_points.insert(first_player.player_signature, POINTS_FASTER_PLAYER);
+    debug(logfile.clone(),format!("Ronda rustica: el jugador con id {} ha sido el mas rapido, \
+    sumando {} puntos", first_player.player_signature, POINTS_FASTER_PLAYER));
+
+    let last_player = *signed_cards.last().unwrap();
+    rustic_hand_points.insert(last_player.player_signature, POINTS_SLOWER_PLAYER);
+
+    debug(logfile.clone(),format!("Ronda rustica: el jugador con id {} ha sido el mas lento, \
+    restando {} puntos y perdiendo su proximo turno", last_player.player_signature, POINTS_SLOWER_PLAYER));
 
     let normal_hand_points = calculate_normal_hand_points(signed_cards);
 
-    return merge_points_hashmaps(normal_hand_points, points_by_user);
+    return (merge_points_hashmaps(normal_hand_points, rustic_hand_points), last_player.player_signature) ;
 }
 
-pub fn coordinator(players: i32, card_receiver: Receiver<SignedCard>, players_barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>) {
+pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<SignedCard>,
+                   starting_barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
+                   cond_vars_players: HashMap<i32, Arc<(Mutex<bool>, Condvar)>>) {
     let (deck_size, unused_cards) = deal_cards_to_players(players, tx_deck);
-    println!("Unused cards {}", unused_cards);
+    debug(logfile.clone(), format!("Unused cards {}", unused_cards));
 
     let mut points_by_user = empty_points_map(players);
 
+
     for i in 0..deck_size{
+        debug(logfile.clone(), format!("Starting round {}", i + 1));
         let mut cards = Vec::new();
 
-        for _ in 0..players{
-            cards.push(card_receiver.recv().unwrap());
+        let normal = true;
+
+        if normal {
+            starting_barrier.wait();
         }
 
-        let hand_points = calculate_rustic_hand_points(cards);
-        points_by_user = merge_points_hashmaps(points_by_user, hand_points);
+        for p in 0..players {
+            /// Scope artificial creado para poder liberar el lock que se adquiere al obtener la variable
+            /// can_play. Si no generamos este scope, el player nunca puede adquirir el lock y hay un deadlock
+            /// cuando intenta adquirir el valor de la condition variable.
+            {
+                let cond_var = cond_vars_players.get(&p).unwrap();
+                let (lock, cvar) = &**cond_var;
+                let mut can_play = lock.lock().unwrap();
+                *can_play = true;
+                cvar.notify_one();
+            }
 
-        players_barrier.wait();
+            if normal {
+                cards.push(card_receiver.recv().unwrap());
+            }
+        }
+
+        if !normal{
+            starting_barrier.wait();
+            for _ in 0..players{
+                cards.push(card_receiver.recv().unwrap());
+            }
+
+        }
+
+
+        let (rustic_hand_points, slowest_player) = calculate_rustic_hand_points(logfile.clone(), cards);
+
+        points_by_user = merge_points_hashmaps(points_by_user, rustic_hand_points);
+
+        register_current_points(logfile.clone(), &points_by_user);
+
 
         println!("Finish iteracion {}", i);
     }

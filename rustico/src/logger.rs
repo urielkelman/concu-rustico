@@ -1,4 +1,4 @@
-pub type LogFile = Option<Arc<Mutex<LineWriter<File>>>>;
+pub type LogFile = Arc<Mutex<Option<LineWriter<File>>>>;
 
 use std::fs::{self, File};
 use std::io::prelude::*;
@@ -9,26 +9,25 @@ use std::error::Error;
 pub fn create_logfile(filename: String) -> Result<LogFile, Box<dyn Error>>{
     let raw_file = File::create(filename)?;
     let file = LineWriter::new(raw_file);
-    return Ok(Some(Arc::new(Mutex::new(file))));
+    return Ok(Arc::new((Mutex::new(Some(file)))));
+}
+
+fn log(file: LogFile, message: String, level: String) -> std::io::Result<()>{
+    if file.lock().unwrap().is_some(){
+        file.lock().unwrap().as_mut().unwrap().write_all(format!("{}: {}\n", level, message).as_bytes())?;
+    }
+    Ok(())
 }
 
 pub fn debug(file: LogFile, message: String) -> std::io::Result<()>{
-    if file.is_some(){
-        file.unwrap().lock().unwrap().write_all(format!("DEBUG: {}\n", message).as_bytes())?;
-    }
-    Ok(())
+    return log(file, message, "DEBUG".to_string());
 }
 
 pub fn info(file: LogFile, message: String) -> std::io::Result<()>{
-    if file.is_some(){
-        file.unwrap().lock().unwrap().write_all(format!("INFO: {}\n", message).as_bytes())?;
-    }
-    Ok(())
+    return log(file, message, "INFO".to_string());
+
 }
 
 pub fn error(file: LogFile, message: String) -> std::io::Result<()>{
-    if file.is_some(){
-        file.unwrap().lock().unwrap().write_all(format!("ERROR: {}\n", message).as_bytes())?;
-    }
-    Ok(())
+    return log(file, message, "ERROR".to_string());
 }

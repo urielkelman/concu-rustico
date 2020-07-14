@@ -25,6 +25,7 @@ pub fn random_full_deck() -> Vec<Card>{
             full_deck.push(Card{number: i, suit: *suit});
         }
     }
+    //Mix the deck
     full_deck = full_deck.choose_multiple(&mut rng, full_deck.len()).map(|x| *x).collect();
     return full_deck;
 }
