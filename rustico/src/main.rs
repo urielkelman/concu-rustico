@@ -5,7 +5,6 @@ mod coordinator;
 mod signed_card;
 mod cards;
 mod logger;
-mod messages;
 
 use clap::{App, Arg};
 use std::sync::{mpsc, Barrier, Arc, Mutex, Condvar};
@@ -17,7 +16,6 @@ use std::io::prelude::*;
 use std::io::LineWriter;
 use std::io::{Error, ErrorKind};
 use crate::logger::{create_logfile, debug, info, error, LogFile};
-use crate::messages::*;
 use std::collections::HashMap;
 
 
@@ -80,7 +78,7 @@ fn main() -> std::io::Result<()> {
     let mut logfile: LogFile = Arc::new(Mutex::new(None));
     if matches.is_present("debug") {
         logfile = create_logfile(matches.value_of("debug").unwrap().to_string()).unwrap();
-        debug(logfile.clone(), LOGFILE_STARTED.to_string())?;
+        debug(logfile.clone(), "Inicio del logfile")?;
     }
 
 

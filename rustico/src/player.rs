@@ -29,7 +29,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
 
         card_sender.send(SignedCard { card, player_signature: player_id }).unwrap();
 
-        debug(log.clone(), format!("Player {} throw the card with number {}", player_id, card.number));
+        debug(log.clone(), format!("El jugador {} tiró una carta de número {}", player_id, card.number));
 
         *can_play = false;
     }
