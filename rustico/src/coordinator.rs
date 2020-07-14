@@ -28,11 +28,11 @@ fn deal_cards_to_players(players: i32, tx_deck: Sender<Vec<Card>>) -> (i32, i32)
     return (deck_size, unused_cards);
 }
 
-fn empty_points_map(players: i32) -> HashMap<i32, i32>{
+fn player_fixed_values_map(players: i32, value: i32) -> HashMap<i32, i32>{
     let mut points_by_user = HashMap::new();
 
     for p in 0..players {
-        points_by_user.insert(p, 0);
+        points_by_user.insert(p, value);
     }
 
     return points_by_user
@@ -49,7 +49,7 @@ fn merge_points_hashmaps(map1: HashMap<i32, i32>, map2: HashMap<i32, i32>) -> Ha
 }
 
 fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HashMap<i32, i32>{
-    let mut points_by_user = empty_points_map(signed_cards.len() as i32);
+    let mut points_by_user = player_fixed_values_map(signed_cards.len() as i32, 0);
 
     signed_cards.sort_by(|a, b| a.card.number.cmp(&b.card.number));
 
@@ -71,7 +71,7 @@ fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>)
 
 
 fn calculate_rustic_hand_points(logfile: LogFile, signed_cards: Vec<SignedCard>) -> (HashMap<i32, i32>, i32) {
-    let mut rustic_hand_points = empty_points_map(signed_cards.len() as i32);
+    let mut rustic_hand_points = player_fixed_values_map(signed_cards.len() as i32, 0);
 
     let first_player = signed_cards.first().unwrap();
     rustic_hand_points.insert(first_player.player_signature, POINTS_FASTER_PLAYER);
@@ -89,26 +89,59 @@ fn calculate_rustic_hand_points(logfile: LogFile, signed_cards: Vec<SignedCard>)
     return (merge_points_hashmaps(normal_hand_points, rustic_hand_points), last_player.player_signature) ;
 }
 
+fn keep_playing(available_cards_by_user: &HashMap<i32,i32>) -> bool{
+    for available_cards in available_cards_by_user.values(){
+        if *available_cards == 0 {
+            return false;
+        }
+    }
+    return true;
+}
+
+fn determine_round_points(cards: Vec<SignedCard>, normal: bool, logfile: LogFile) -> (HashMap<i32,i32>, Option<i32>){
+    return if normal {
+        (calculate_normal_hand_points(cards), None)
+    } else {
+        let (points_by_user, suspended_player) = calculate_rustic_hand_points(logfile, cards);
+        (points_by_user, Some(suspended_player))
+    }
+}
+
 pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<SignedCard>,
                    starting_barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
                    cond_vars_players: HashMap<i32, Arc<(Mutex<bool>, Condvar)>>) {
     let (deck_size, unused_cards) = deal_cards_to_players(players, tx_deck);
     debug(logfile.clone(), format!("Unused cards {}", unused_cards));
 
-    let mut points_by_user = empty_points_map(players);
+    let mut points_by_user = player_fixed_values_map(players, 0);
+    let mut available_cards_by_user = player_fixed_values_map(players, deck_size);
 
+    let mut round = 1;
 
-    for i in 0..deck_size{
-        debug(logfile.clone(), format!("Starting round {}", i + 1));
+    let mut suspended_player: Option<i32> = None;
+
+    let mut previous_suspended_player: Option<i32> = None;
+
+    while keep_playing(&available_cards_by_user){
+        debug(logfile.clone(), format!("Iniciando ronda {}", round));
+
         let mut cards = Vec::new();
 
-        let normal = i % 2 == 0;
+        let normal = round % 2 == 0;
+
+        if previous_suspended_player.is_some(){
+            starting_barrier.wait();
+        }
 
         if normal {
             starting_barrier.wait();
         }
 
         for p in 0..players {
+            if suspended_player.is_some() && suspended_player.unwrap() == p {
+                continue;
+            }
+
             /// Scope artificial creado para poder liberar el lock que se adquiere al obtener la variable
             /// can_play. Si no generamos este scope, el player nunca puede adquirir el lock y hay un deadlock
             /// cuando intenta adquirir el valor de la condition variable.
@@ -127,21 +160,33 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
 
         if !normal{
             starting_barrier.wait();
-            for _ in 0..players{
+            for p in 0..players{
+                if suspended_player.is_some() && suspended_player.unwrap() == p {
+                    continue;
+                }
                 cards.push(card_receiver.recv().unwrap());
             }
-
         }
 
+        let (hand_points, new_suspended_player) = determine_round_points(cards, normal, logfile.clone());
 
-        let (rustic_hand_points, slowest_player) = calculate_rustic_hand_points(logfile.clone(), cards);
-
-        points_by_user = merge_points_hashmaps(points_by_user, rustic_hand_points);
+        points_by_user = merge_points_hashmaps(points_by_user, hand_points);
 
         register_current_points(logfile.clone(), &points_by_user);
 
+        for p in 0..players {
+            if suspended_player.is_some() && suspended_player.unwrap() == p {
+                continue;
+            }
+            let current_cards = available_cards_by_user.get(&p).unwrap();
+            available_cards_by_user.insert(p, current_cards - 1);
+        }
 
-        println!("Finish iteracion {}", i);
+        previous_suspended_player = suspended_player;
+
+        suspended_player = new_suspended_player;
+        debug(logfile.clone(), format!("Terminando ronda {}.", round));
+        round += 1;
     }
 }
 
@@ -152,7 +197,7 @@ mod tests {
 
     #[test]
     fn test_empty_points_map_len() {
-        let empty_map = empty_points_map(4);
+        let empty_map = player_fixed_values_map(4, 0);
         assert_eq!(empty_map.len(), 4);
     }
 

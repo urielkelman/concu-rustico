@@ -22,7 +22,6 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
         players_barrier.wait();
 
         let mut can_play = lock.lock().unwrap();
-        println!("aca llega {}", player_id);
 
         while !*can_play {
             can_play = cvar.wait(can_play).unwrap();
@@ -32,9 +31,6 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
 
         debug(log.clone(), format!("Player {} throw the card with number {}", player_id, card.number));
 
-
         *can_play = false;
     }
-
-    println!("Barrera levantada");
 }
