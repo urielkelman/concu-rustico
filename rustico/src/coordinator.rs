@@ -102,7 +102,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         debug(logfile.clone(), format!("Starting round {}", i + 1));
         let mut cards = Vec::new();
 
-        let normal = true;
+        let normal = i % 2 == 0;
 
         if normal {
             starting_barrier.wait();

@@ -1,145 +1,145 @@
 DEBUG: Logfile started
 DEBUG: Unused cards 0
 DEBUG: Starting round 1
-DEBUG: Player 0 throw the card with number 7
+DEBUG: Player 0 throw the card with number 13
 DEBUG: Player 1 throw the card with number 9
-DEBUG: Player 2 throw the card with number 4
-DEBUG: Player 3 throw the card with number 8
+DEBUG: Player 2 throw the card with number 6
+DEBUG: Player 3 throw the card with number 10
 DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador con id 1 posee 0 puntos.
+DEBUG: El jugador con id 0 posee 11 puntos.
 DEBUG: El jugador con id 3 posee -5 puntos.
-DEBUG: El jugador con id 0 posee 1 puntos.
-DEBUG: El jugador con id 1 posee 10 puntos.
 DEBUG: El jugador con id 2 posee 0 puntos.
 DEBUG: Starting round 2
+DEBUG: Player 1 throw the card with number 12
 DEBUG: Player 0 throw the card with number 9
-DEBUG: Player 1 throw the card with number 9
-DEBUG: Player 2 throw the card with number 2
-DEBUG: Player 3 throw the card with number 12
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 3 posee 0 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 1 posee 10 puntos.
-DEBUG: El jugador con id 0 posee 2 puntos.
-DEBUG: Starting round 3
-DEBUG: Player 0 throw the card with number 9
-DEBUG: Player 1 throw the card with number 10
-DEBUG: Player 2 throw the card with number 1
-DEBUG: Player 3 throw the card with number 3
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 3 posee -5 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 3 puntos.
-DEBUG: El jugador con id 1 posee 20 puntos.
-DEBUG: Starting round 4
-DEBUG: Player 0 throw the card with number 3
-DEBUG: Player 1 throw the card with number 13
-DEBUG: Player 2 throw the card with number 4
-DEBUG: Player 3 throw the card with number 8
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 1 posee 30 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 3 posee -10 puntos.
-DEBUG: El jugador con id 0 posee 4 puntos.
-DEBUG: Starting round 5
-DEBUG: Player 0 throw the card with number 5
-DEBUG: Player 1 throw the card with number 2
-DEBUG: Player 2 throw the card with number 7
-DEBUG: Player 3 throw the card with number 6
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 0 posee 5 puntos.
-DEBUG: El jugador con id 3 posee -15 puntos.
-DEBUG: El jugador con id 1 posee 30 puntos.
-DEBUG: El jugador con id 2 posee 10 puntos.
-DEBUG: Starting round 6
-DEBUG: Player 0 throw the card with number 4
-DEBUG: Player 1 throw the card with number 10
+DEBUG: Ronda rustica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Player 2 throw the card with number 13
-DEBUG: Player 3 throw the card with number 6
+DEBUG: Player 3 throw the card with number 8
+DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador con id 0 posee 11 puntos.
+DEBUG: El jugador con id 1 posee 1 puntos.
+DEBUG: El jugador con id 2 posee 10 puntos.
+DEBUG: El jugador con id 3 posee -10 puntos.
+DEBUG: Starting round 3
+DEBUG: Player 0 throw the card with number 7
+DEBUG: Player 1 throw the card with number 3
+DEBUG: Player 2 throw the card with number 2
+DEBUG: Player 3 throw the card with number 7
 DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 2 posee 20 puntos.
-DEBUG: El jugador con id 0 posee 6 puntos.
-DEBUG: El jugador con id 3 posee -20 puntos.
-DEBUG: El jugador con id 1 posee 30 puntos.
-DEBUG: Starting round 7
-DEBUG: Player 0 throw the card with number 6
-DEBUG: Player 1 throw the card with number 7
+DEBUG: El jugador con id 1 posee 1 puntos.
+DEBUG: El jugador con id 0 posee 22 puntos.
+DEBUG: El jugador con id 3 posee -5 puntos.
+DEBUG: El jugador con id 2 posee 10 puntos.
+DEBUG: Starting round 4
+DEBUG: Player 3 throw the card with number 6
+DEBUG: Player 1 throw the card with number 11
+DEBUG: Player 2 throw the card with number 1
+DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Player 0 throw the card with number 9
+DEBUG: El jugador con id 1 posee 11 puntos.
+DEBUG: El jugador con id 0 posee 17 puntos.
+DEBUG: El jugador con id 2 posee 10 puntos.
+DEBUG: El jugador con id 3 posee -4 puntos.
+DEBUG: Starting round 5
+DEBUG: Player 0 throw the card with number 8
+DEBUG: Player 1 throw the card with number 11
 DEBUG: Player 2 throw the card with number 12
 DEBUG: Player 3 throw the card with number 5
 DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 0 posee 7 puntos.
+DEBUG: El jugador con id 0 posee 18 puntos.
+DEBUG: El jugador con id 3 posee -9 puntos.
+DEBUG: El jugador con id 2 posee 20 puntos.
+DEBUG: El jugador con id 1 posee 11 puntos.
+DEBUG: Starting round 6
+DEBUG: Player 1 throw the card with number 10
+DEBUG: Player 0 throw the card with number 8
+DEBUG: Player 3 throw the card with number 7
+DEBUG: Ronda rustica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
 DEBUG: El jugador con id 2 posee 30 puntos.
-DEBUG: El jugador con id 3 posee -25 puntos.
-DEBUG: El jugador con id 1 posee 30 puntos.
-DEBUG: Starting round 8
-DEBUG: Player 0 throw the card with number 1
-DEBUG: Player 2 throw the card with number 10
-DEBUG: Player 1 throw the card with number 11
+DEBUG: El jugador con id 3 posee -14 puntos.
+DEBUG: El jugador con id 0 posee 18 puntos.
+DEBUG: El jugador con id 1 posee 12 puntos.
+DEBUG: Starting round 7
+DEBUG: Player 2 throw the card with number 12
+DEBUG: Player 0 throw the card with number 10
+DEBUG: Player 1 throw the card with number 4
+DEBUG: Player 2 throw the card with number 4
 DEBUG: Player 3 throw the card with number 5
 DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
 DEBUG: El jugador con id 2 posee 30 puntos.
-DEBUG: El jugador con id 3 posee -30 puntos.
-DEBUG: El jugador con id 0 posee 8 puntos.
-DEBUG: El jugador con id 1 posee 40 puntos.
-DEBUG: Starting round 9
-DEBUG: Player 0 throw the card with number 4
-DEBUG: Player 1 throw the card with number 1
-DEBUG: Player 2 throw the card with number 10
-DEBUG: Player 3 throw the card with number 7
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 1 posee 40 puntos.
-DEBUG: El jugador con id 2 posee 40 puntos.
-DEBUG: El jugador con id 0 posee 9 puntos.
-DEBUG: El jugador con id 3 posee -35 puntos.
-DEBUG: Starting round 10
-DEBUG: Player 0 throw the card with number 1
-DEBUG: Player 1 throw the card with number 2
-DEBUG: Player 2 throw the card with number 13
-DEBUG: Player 3 throw the card with number 12
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 3 posee -40 puntos.
-DEBUG: El jugador con id 2 posee 50 puntos.
-DEBUG: El jugador con id 1 posee 40 puntos.
-DEBUG: El jugador con id 0 posee 10 puntos.
-DEBUG: Starting round 11
-DEBUG: Player 0 throw the card with number 3
-DEBUG: Player 1 throw the card with number 13
-DEBUG: Player 2 throw the card with number 11
-DEBUG: Player 3 throw the card with number 8
-DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 1 posee 50 puntos.
-DEBUG: El jugador con id 3 posee -45 puntos.
-DEBUG: El jugador con id 2 posee 50 puntos.
-DEBUG: El jugador con id 0 posee 11 puntos.
-DEBUG: Starting round 12
+DEBUG: El jugador con id 1 posee 12 puntos.
+DEBUG: El jugador con id 3 posee -19 puntos.
+DEBUG: El jugador con id 0 posee 29 puntos.
+DEBUG: Starting round 8
+DEBUG: Player 1 throw the card with number 4
+DEBUG: Player 3 throw the card with number 3
+DEBUG: Player 2 throw the card with number 9
 DEBUG: Player 0 throw the card with number 12
+DEBUG: Ronda rustica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador con id 3 posee -19 puntos.
+DEBUG: El jugador con id 2 posee 30 puntos.
+DEBUG: El jugador con id 0 posee 34 puntos.
+DEBUG: El jugador con id 1 posee 13 puntos.
+DEBUG: Starting round 9
+DEBUG: Player 0 throw the card with number 2
 DEBUG: Player 1 throw the card with number 11
-DEBUG: Player 3 throw the card with number 6
+DEBUG: Player 2 throw the card with number 1
+DEBUG: Player 3 throw the card with number 4
 DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Player 2 throw the card with number 2
 DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 2 posee 50 puntos.
-DEBUG: El jugador con id 1 posee 50 puntos.
-DEBUG: El jugador con id 3 posee -50 puntos.
-DEBUG: El jugador con id 0 posee 22 puntos.
-DEBUG: Starting round 13
-DEBUG: Player 0 throw the card with number 5
+DEBUG: El jugador con id 2 posee 30 puntos.
+DEBUG: El jugador con id 0 posee 35 puntos.
+DEBUG: El jugador con id 3 posee -24 puntos.
+DEBUG: El jugador con id 1 posee 23 puntos.
+DEBUG: Starting round 10
+DEBUG: Player 2 throw the card with number 13
 DEBUG: Player 1 throw the card with number 11
+DEBUG: Player 0 throw the card with number 6
+DEBUG: Ronda rustica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Player 3 throw the card with number 3
+DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador con id 2 posee 40 puntos.
+DEBUG: El jugador con id 3 posee -24 puntos.
+DEBUG: El jugador con id 1 posee 24 puntos.
+DEBUG: El jugador con id 0 posee 30 puntos.
+DEBUG: Starting round 11
+DEBUG: Player 1 throw the card with number 2
+DEBUG: Player 0 throw the card with number 8
+DEBUG: Player 2 throw the card with number 1
+DEBUG: Player 3 throw the card with number 5
+DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador con id 2 posee 40 puntos.
+DEBUG: El jugador con id 3 posee -29 puntos.
+DEBUG: El jugador con id 0 posee 41 puntos.
+DEBUG: El jugador con id 1 posee 24 puntos.
+DEBUG: Starting round 12
 DEBUG: Player 2 throw the card with number 3
-DEBUG: Player 3 throw the card with number 8
+DEBUG: Player 3 throw the card with number 1
+DEBUG: Player 1 throw the card with number 5
+DEBUG: Player 0 throw the card with number 6
+DEBUG: Ronda rustica: el jugador con id 2 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador con id 1 posee 24 puntos.
+DEBUG: El jugador con id 3 posee -29 puntos.
+DEBUG: El jugador con id 0 posee 46 puntos.
+DEBUG: El jugador con id 2 posee 41 puntos.
+DEBUG: Starting round 13
+DEBUG: Player 0 throw the card with number 2
+DEBUG: Player 1 throw the card with number 13
+DEBUG: Player 2 throw the card with number 7
+DEBUG: Player 3 throw the card with number 10
 DEBUG: Ronda rustica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rustica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: El jugador con id 3 posee -55 puntos.
-DEBUG: El jugador con id 2 posee 50 puntos.
-DEBUG: El jugador con id 0 posee 23 puntos.
-DEBUG: El jugador con id 1 posee 60 puntos.
+DEBUG: El jugador con id 2 posee 41 puntos.
+DEBUG: El jugador con id 3 posee -34 puntos.
+DEBUG: El jugador con id 0 posee 47 puntos.
+DEBUG: El jugador con id 1 posee 34 puntos.

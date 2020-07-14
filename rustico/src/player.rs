@@ -26,7 +26,6 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
 
         while !*can_play {
             can_play = cvar.wait(can_play).unwrap();
-
         }
 
         card_sender.send(SignedCard { card, player_signature: player_id }).unwrap();
