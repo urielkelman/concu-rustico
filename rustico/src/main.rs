@@ -16,6 +16,7 @@ use std::io::prelude::*;
 use std::io::LineWriter;
 use std::io::{Error, ErrorKind};
 use crate::logger::{create_logfile, debug, info, error, LogFile};
+use crate::player::RoundPlayerFlags;
 use std::collections::HashMap;
 
 
@@ -38,7 +39,7 @@ fn set_up_threads(players: i32, log_file: LogFile) {
         let barrier_clone = starting_barrier.clone();
         let shared_rx_deck_clone = shared_rx_deck.clone();
         let log_file_clone = log_file.clone();
-        let cond_var_pair = Arc::new((Mutex::new(false), Condvar::new()));
+        let cond_var_pair = Arc::new((Mutex::new(RoundPlayerFlags{is_my_turn: false, can_throw_card: false}), Condvar::new()));
         let cond_var_pair_clone = cond_var_pair.clone();
         threads.push(thread::spawn(move || {
             player(log_file_clone, tx_clone_player, barrier_clone,
@@ -78,7 +79,7 @@ fn main() -> std::io::Result<()> {
     let mut logfile: LogFile = Arc::new(Mutex::new(None));
     if matches.is_present("debug") {
         logfile = create_logfile(matches.value_of("debug").unwrap().to_string()).unwrap();
-        debug(logfile.clone(), "Inicio del logfile")?;
+        debug(logfile.clone(), "Inicio del logfile".to_string())?;
     }
 
 
@@ -89,8 +90,6 @@ fn main() -> std::io::Result<()> {
     }
 
     set_up_threads(players, logfile);
-
-    println!("{}", players);
 
     return Ok(());
 }

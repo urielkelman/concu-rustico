@@ -11,8 +11,14 @@ fn receive_deck(rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>) -> Vec<Card> {
     return rx_deck.lock().unwrap().recv().unwrap();
 }
 
+pub struct RoundPlayerFlags {
+    pub is_my_turn: bool,
+    pub can_throw_card: bool
+}
+
 pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Arc<Barrier>,
-              rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<bool>, Condvar)>, player_id: i32) {
+              rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<RoundPlayerFlags>, Condvar)>,
+              player_id: i32) {
 
     let deck = receive_deck(rx_deck);
 
@@ -21,16 +27,16 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
     for card in deck {
         players_barrier.wait();
 
-        let mut can_play = lock.lock().unwrap();
+        let mut round_player_flags = lock.lock().unwrap();
 
-        while !*can_play {
-            can_play = cvar.wait(can_play).unwrap();
+        while !(*round_player_flags).is_my_turn {
+            round_player_flags = cvar.wait(round_player_flags).unwrap();
         }
 
-        card_sender.send(SignedCard { card, player_signature: player_id }).unwrap();
+        if (*round_player_flags).can_throw_card {
+            card_sender.send(SignedCard { card, player_signature: player_id }).unwrap();
+        }
 
-        debug(log.clone(), format!("El jugador {} tiró una carta de número {}", player_id, card.number));
-
-        *can_play = false;
+        (*round_player_flags).is_my_turn = false;
     }
 }
