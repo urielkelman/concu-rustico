@@ -1,6 +1,7 @@
 use std::sync::mpsc::{Receiver, Sender};
 use std::sync::{Barrier, Arc, Mutex, Condvar};
 use std::collections::HashMap;
+use rand::Rng;
 
 use crate::signed_card::SignedCard;
 use crate::cards::{Card, random_full_deck};
@@ -118,6 +119,8 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
     let (deck_size, unused_cards) = deal_cards_to_players(players, tx_deck);
     debug(logfile.clone(), format!("Cartas sin usar {}", unused_cards));
 
+    let mut rng = rand::thread_rng();
+
     let mut points_by_user = player_fixed_values_map(players, 0);
     let mut available_cards_by_user = player_fixed_values_map(players, deck_size);
 
@@ -130,7 +133,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
 
         let mut cards = Vec::new();
 
-        let normal = round % 2 == 0;
+        let normal: bool = rng.gen();
 
         if normal {
             debug(logfile.clone(), "La ronda es de tipo normal".to_string());
