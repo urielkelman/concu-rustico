@@ -39,7 +39,8 @@ fn set_up_threads(players: i32, log_file: LogFile) {
         let barrier_clone = starting_barrier.clone();
         let shared_rx_deck_clone = shared_rx_deck.clone();
         let log_file_clone = log_file.clone();
-        let cond_var_pair = Arc::new((Mutex::new(RoundPlayerFlags{is_my_turn: false, can_throw_card: false}), Condvar::new()));
+        let cond_var_pair = Arc::new((Mutex::new(RoundPlayerFlags{is_my_turn: false, can_throw_card: false,
+                                                                    game_ended: false}), Condvar::new()));
         let cond_var_pair_clone = cond_var_pair.clone();
         threads.push(thread::spawn(move || {
             player(log_file_clone, tx_clone_player, barrier_clone,

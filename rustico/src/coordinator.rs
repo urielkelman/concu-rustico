@@ -71,6 +71,9 @@ fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HandOutcom
     let mut i = signed_cards.len() - 1;
     while i >= 0 && signed_cards[i].card.number == max_card.number {
         hand_outcome.players_with_max_card.push(signed_cards[i].player_signature);
+        if i == 0{
+            break;
+        }
         i-=1;
     }
 
@@ -169,7 +172,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
                 let cond_var = cond_vars_players.get(&p).unwrap();
                 let (lock, cvar) = &**cond_var;
                 let mut round_player_flags = lock.lock().unwrap();
-                *round_player_flags = RoundPlayerFlags{is_my_turn: true, can_throw_card: true};
+                *round_player_flags = RoundPlayerFlags{is_my_turn: true, can_throw_card: true, game_ended: false};
                 if suspended_player.is_some() && suspended_player.unwrap() == p {
                     (*round_player_flags).can_throw_card = false;
                 }
@@ -232,6 +235,20 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         suspended_player = hand_outcome.slowest_player;
         debug(logfile.clone(), format!("Terminando ronda {}.", round));
         round += 1;
+    }
+
+    // Ultima iteracion para avisar el fin
+
+    starting_barrier.wait();
+
+    for p in 0..players {
+        {
+            let cond_var = cond_vars_players.get(&p).unwrap();
+            let (lock, cvar) = &**cond_var;
+            let mut round_player_flags = lock.lock().unwrap();
+            *round_player_flags = RoundPlayerFlags{is_my_turn: true, can_throw_card: true, game_ended: true};
+            cvar.notify_one();
+        }
     }
 }
 

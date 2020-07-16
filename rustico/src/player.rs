@@ -13,7 +13,8 @@ fn receive_deck(rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>) -> Vec<Card> {
 
 pub struct RoundPlayerFlags {
     pub is_my_turn: bool,
-    pub can_throw_card: bool
+    pub can_throw_card: bool,
+    pub game_ended: bool
 }
 
 pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Arc<Barrier>,
@@ -24,7 +25,9 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
 
     let (lock, cvar) = &*cond_var;
 
-    for card in deck {
+    let mut cards_thrown: usize = 0;
+
+    loop {
         players_barrier.wait();
 
         let mut round_player_flags = lock.lock().unwrap();
@@ -33,8 +36,13 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
             round_player_flags = cvar.wait(round_player_flags).unwrap();
         }
 
+        if (*round_player_flags).game_ended || cards_thrown == deck.len() {
+            break;
+        }
+
         if (*round_player_flags).can_throw_card {
-            card_sender.send(SignedCard { card, player_signature: player_id }).unwrap();
+            card_sender.send(SignedCard { card: deck[cards_thrown], player_signature: player_id }).unwrap();
+            cards_thrown += 1;
         }
 
         (*round_player_flags).is_my_turn = false;
