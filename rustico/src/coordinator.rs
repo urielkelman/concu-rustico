@@ -15,6 +15,14 @@ const POINTS_FASTER_PLAYER :i32 = 1;
 const POINTS_SLOWER_PLAYER :i32 = -5;
 const POINTS_MAX_CARD :i32 = 10;
 
+struct HandOutcome {
+    pub earned_points: HashMap<i32, i32>,
+    pub max_card_points: i32,
+    pub players_with_max_card: Vec<i32>,
+    pub slowest_player: Option<i32>,
+    pub fastest_player: Option<i32>
+}
+
 fn deal_cards_to_players(players: i32, tx_deck: Sender<Vec<Card>>) -> (i32, i32){
     let deck_size = FRENCH_DECK_SIZE / players;
     let unused_cards = FRENCH_DECK_SIZE % players;
@@ -52,21 +60,27 @@ fn merge_points_hashmaps(map1: HashMap<i32, i32>, map2: HashMap<i32, i32>) -> Ha
     return merged;
 }
 
-fn calculate_normal_hand_points(logfile: LogFile, mut signed_cards: Vec<SignedCard>) -> HashMap<i32, i32>{
-    let mut points_by_user = player_fixed_values_map(signed_cards.len() as i32, 0);
+fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HandOutcome{
+    let mut hand_outcome = HandOutcome{earned_points: player_fixed_values_map(signed_cards.len() as i32, 0),
+                                        max_card_points: 0, players_with_max_card: Vec::new(),
+                                        slowest_player: None, fastest_player: None};
 
     signed_cards.sort_by(|a, b| a.card.number.cmp(&b.card.number));
 
     let max_card: Card = signed_cards.last().unwrap().card;
     let mut i = signed_cards.len() - 1;
     while i >= 0 && signed_cards[i].card.number == max_card.number {
-        points_by_user.insert(signed_cards[i].player_signature, POINTS_MAX_CARD);
-        debug(logfile.clone(), format!("El jugador con id {} gana {} puntos por tirar la máxima carta de la ronda.",
-                signed_cards[i].player_signature, POINTS_MAX_CARD));
+        hand_outcome.players_with_max_card.push(signed_cards[i].player_signature);
         i-=1;
     }
 
-    return points_by_user;
+    hand_outcome.max_card_points = POINTS_MAX_CARD/(hand_outcome.players_with_max_card.len() as i32);
+
+    for p in &hand_outcome.players_with_max_card{
+        hand_outcome.earned_points.insert(*p, hand_outcome.max_card_points);
+    }
+
+    return hand_outcome;
 }
 
 fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>){
@@ -76,23 +90,26 @@ fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>)
 }
 
 
-fn calculate_rustic_hand_points(logfile: LogFile, signed_cards: Vec<SignedCard>) -> (HashMap<i32, i32>, i32) {
-    let mut rustic_hand_points = player_fixed_values_map(signed_cards.len() as i32, 0);
+fn calculate_rustic_hand_points(signed_cards: Vec<SignedCard>) -> HandOutcome {
+    let mut hand_outcome = HandOutcome{earned_points: player_fixed_values_map(signed_cards.len() as i32, 0),
+                                        max_card_points: 0, players_with_max_card: Vec::new(),
+                                        slowest_player: None, fastest_player: None};
 
     let first_player = signed_cards.first().unwrap();
-    rustic_hand_points.insert(first_player.player_signature, POINTS_FASTER_PLAYER);
-    debug(logfile.clone(),format!("Ronda rústica: el jugador con id {} ha sido el mas rapido, \
-    sumando {} puntos", first_player.player_signature, POINTS_FASTER_PLAYER));
+    hand_outcome.earned_points.insert(first_player.player_signature, POINTS_FASTER_PLAYER);
+    hand_outcome.fastest_player = Some(first_player.player_signature);
 
     let last_player = *signed_cards.last().unwrap();
-    rustic_hand_points.insert(last_player.player_signature, POINTS_SLOWER_PLAYER);
+    hand_outcome.earned_points.insert(last_player.player_signature, POINTS_SLOWER_PLAYER);
+    hand_outcome.slowest_player = Some(last_player.player_signature);
 
-    debug(logfile.clone(),format!("Ronda rústica: el jugador con id {} ha sido el mas lento, \
-    restando {} puntos y perdiendo su proximo turno", last_player.player_signature, POINTS_SLOWER_PLAYER));
+    let normal_hand_outcome = calculate_normal_hand_points(signed_cards);
 
-    let normal_hand_points = calculate_normal_hand_points(logfile.clone(), signed_cards);
+    hand_outcome.earned_points = merge_points_hashmaps(hand_outcome.earned_points, normal_hand_outcome.earned_points);
+    hand_outcome.players_with_max_card = normal_hand_outcome.players_with_max_card;
+    hand_outcome.max_card_points = normal_hand_outcome.max_card_points;
 
-    return (merge_points_hashmaps(normal_hand_points, rustic_hand_points), last_player.player_signature) ;
+    return hand_outcome;
 }
 
 fn keep_playing(available_cards_by_user: &HashMap<i32,i32>) -> bool{
@@ -104,12 +121,11 @@ fn keep_playing(available_cards_by_user: &HashMap<i32,i32>) -> bool{
     return true;
 }
 
-fn determine_round_points(cards: Vec<SignedCard>, normal: bool, logfile: LogFile) -> (HashMap<i32,i32>, Option<i32>){
+fn determine_hand_outcome(cards: Vec<SignedCard>, normal: bool) -> HandOutcome {
     return if normal {
-        (calculate_normal_hand_points(logfile, cards), None)
+        calculate_normal_hand_points(cards)
     } else {
-        let (points_by_user, suspended_player) = calculate_rustic_hand_points(logfile, cards);
-        (points_by_user, Some(suspended_player))
+        return calculate_rustic_hand_points(cards);
     }
 }
 
@@ -187,9 +203,21 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             }
         }
 
-        let (hand_points, new_suspended_player) = determine_round_points(cards, normal, logfile.clone());
+        let hand_outcome = determine_hand_outcome(cards, normal);
 
-        points_by_user = merge_points_hashmaps(points_by_user, hand_points);
+        points_by_user = merge_points_hashmaps(points_by_user, hand_outcome.earned_points);
+        if hand_outcome.fastest_player.is_some(){
+            debug(logfile.clone(),format!("Ronda rústica: el jugador con id {} ha sido el mas rapido, \
+            sumando {} puntos", hand_outcome.fastest_player.unwrap(), POINTS_FASTER_PLAYER));
+        }
+
+        if hand_outcome.slowest_player.is_some(){
+            debug(logfile.clone(),format!("Ronda rústica: el jugador con id {} ha sido el mas lento, \
+            restando {} puntos y perdiendo su proximo turno", hand_outcome.slowest_player.unwrap(), POINTS_SLOWER_PLAYER));
+        }
+
+        debug(logfile.clone(), format!("Los jugadores con ids {:?} ganan {} puntos por tirar la máxima carta de la ronda.",
+                hand_outcome.players_with_max_card, hand_outcome.max_card_points));
 
         register_current_points(logfile.clone(), &points_by_user);
 
@@ -201,7 +229,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             available_cards_by_user.insert(p, current_cards - 1);
         }
 
-        suspended_player = new_suspended_player;
+        suspended_player = hand_outcome.slowest_player;
         debug(logfile.clone(), format!("Terminando ronda {}.", round));
         round += 1;
     }
@@ -216,6 +244,9 @@ mod tests {
     fn test_empty_points_map_len() {
         let empty_map = player_fixed_values_map(4, 0);
         assert_eq!(empty_map.len(), 4);
+        for v in empty_map.values(){
+            assert_eq!(*v, 0);
+        }
     }
 
     #[test]
@@ -248,5 +279,16 @@ mod tests {
         assert_eq!(*merged_map.get(&(1 as i32)).unwrap(), 8 as i32);
         assert_eq!(*merged_map.get(&(2 as i32)).unwrap(), 2 as i32);
         assert_eq!(*merged_map.get(&(5 as i32)).unwrap(), 7 as i32);
+    }
+
+    #[test]
+    fn test_keep_playing() {
+        let mut map = HashMap::new();
+        map.insert(0,1);
+        map.insert(1,10);
+        map.insert(2,2);
+        assert!(keep_playing(&map));
+        map.insert(3,0);
+        assert!(!keep_playing(&map));
     }
 }
