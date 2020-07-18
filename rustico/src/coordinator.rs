@@ -133,7 +133,7 @@ fn determine_hand_outcome(cards: Vec<SignedCard>, normal: bool) -> HandOutcome {
 }
 
 pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<SignedCard>,
-                   starting_barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
+                   starting_barrier: Arc<Barrier>, ending_barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
                    cond_vars_players: HashMap<i32, Arc<(Mutex<RoundPlayerFlags>, Condvar)>>) {
     let (deck_size, unused_cards) = deal_cards_to_players(players, tx_deck);
     debug(logfile.clone(), format!("Cartas sin usar {}", unused_cards));
@@ -175,14 +175,17 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
                 let cond_var = cond_vars_players.get(&p).unwrap();
                 let (lock, cvar) = &**cond_var;
                 let mut round_player_flags = lock.lock().unwrap();
-                *round_player_flags = RoundPlayerFlags{is_my_turn: true, can_throw_card: true, game_ended: false};
+
                 if suspended_player.is_some() && suspended_player.unwrap() == p {
-                    (*round_player_flags).can_throw_card = false;
+                    *round_player_flags = RoundPlayerFlags{is_my_turn: true, can_throw_card: false, game_ended: false}
+                } else {
+                    *round_player_flags = RoundPlayerFlags{is_my_turn: true, can_throw_card: true, game_ended: false}
                 }
                 cvar.notify_one();
             }
 
             if suspended_player.is_some() && suspended_player.unwrap() == p {
+                println!("1: Se ejecuta continue para jugador suspendido {}", p);
                 continue;
             }
 
@@ -199,6 +202,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             starting_barrier.wait();
             for p in 0..players{
                 if suspended_player.is_some() && suspended_player.unwrap() == p {
+                    println!("2: Se ejecuta continue para jugador suspendido {}", p);
                     continue;
                 }
                 let signed_card = card_receiver.recv().unwrap();
@@ -240,8 +244,13 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
 
         suspended_player = hand_outcome.slowest_player;
+        if suspended_player.is_some() {
+            println!("Suspendido: {} en ronda {}.", hand_outcome.slowest_player.unwrap(), round);
+        }
         debug(logfile.clone(), format!("Terminando ronda {}.", round));
         round += 1;
+
+        ending_barrier.wait();
     }
 
     // Ultima iteracion para avisar el fin
@@ -257,6 +266,8 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             cvar.notify_one();
         }
     }
+
+    ending_barrier.wait();
 }
 
 #[cfg(test)]

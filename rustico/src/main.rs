@@ -26,6 +26,7 @@ fn check_player_quantity(players: i32) -> bool {
 
 fn set_up_threads(players: i32, log_file: LogFile) {
     let starting_barrier = Arc::new(Barrier::new((players + 1) as usize));
+    let ending_barrier = Arc::new(Barrier::new((players + 1) as usize));
 
     let (tx_card, rx_card) = mpsc::channel();
     let (tx_deck, rx_deck) = mpsc::channel();
@@ -36,22 +37,24 @@ fn set_up_threads(players: i32, log_file: LogFile) {
 
     for p in 0..players {
         let tx_clone_player = mpsc::Sender::clone(&tx_card);
-        let barrier_clone = starting_barrier.clone();
+        let starting_barrier_clone = starting_barrier.clone();
+        let ending_barrier_clone = ending_barrier.clone();
         let shared_rx_deck_clone = shared_rx_deck.clone();
         let log_file_clone = log_file.clone();
         let cond_var_pair = Arc::new((Mutex::new(RoundPlayerFlags{is_my_turn: false, can_throw_card: false,
                                                                     game_ended: false}), Condvar::new()));
         let cond_var_pair_clone = cond_var_pair.clone();
         threads.push(thread::spawn(move || {
-            player(log_file_clone, tx_clone_player, barrier_clone,
-                   shared_rx_deck_clone, cond_var_pair, p);
+            player(log_file_clone, tx_clone_player, starting_barrier_clone,
+                   ending_barrier_clone,shared_rx_deck_clone, cond_var_pair, p);
         }));
         cond_vars_players.insert(p, cond_var_pair_clone);
     }
 
 
     threads.push(thread::spawn(move || {
-        coordinator(log_file, players, rx_card, starting_barrier, tx_deck, cond_vars_players)
+        coordinator(log_file, players, rx_card, starting_barrier, ending_barrier,
+                    tx_deck, cond_vars_players)
     }));
 
     for thread in threads {

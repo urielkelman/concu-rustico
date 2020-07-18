@@ -17,8 +17,8 @@ pub struct RoundPlayerFlags {
     pub game_ended: bool
 }
 
-pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Arc<Barrier>,
-              rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<RoundPlayerFlags>, Condvar)>,
+pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: Arc<Barrier>,
+              ending_barrier: Arc<Barrier>, rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<RoundPlayerFlags>, Condvar)>,
               player_id: i32) {
 
     let deck = receive_deck(rx_deck);
@@ -29,7 +29,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
 
     loop {
         debug(log.clone(), format!("jugador {} quiere bajar la barrera", player_id));
-        players_barrier.wait();
+        starting_barrier.wait();
 
         let mut round_player_flags = lock.lock().unwrap();
 
@@ -38,6 +38,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
         }
 
         if (*round_player_flags).game_ended {
+            ending_barrier.wait();
             break;
         }
 
@@ -50,6 +51,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
         }
 
         (*round_player_flags).is_my_turn = false;
-        debug(log.clone(), format!("jugador {} suelta el turno", player_id));
+        debug(log.clone(), format!("jugador {} suelta el turno  ", player_id));
+        ending_barrier.wait();
     }
 }
