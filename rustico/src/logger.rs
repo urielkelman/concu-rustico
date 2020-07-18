@@ -14,7 +14,11 @@ pub fn create_logfile(filename: String) -> Result<LogFile, Box<dyn Error>>{
 
 fn log(file: LogFile, message: String, level: String) -> std::io::Result<()>{
     if file.lock().unwrap().is_some(){
-        file.lock().unwrap().as_mut().unwrap().write_all(format!("{}: {}\n", level, message).as_bytes())?;
+        {
+            let mut line_writer_locked = file.lock().unwrap();
+            line_writer_locked.as_mut().unwrap().write_all(format!("{}: {}\n", level, message).as_bytes())?;
+            line_writer_locked.as_mut().unwrap().flush()?;
+        }
     }
     Ok(())
 }
