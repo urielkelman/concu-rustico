@@ -1,166 +1,164 @@
 DEBUG: Inicio del logfile
 DEBUG: Cartas sin usar 0
 DEBUG: Iniciando ronda 1
-DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 3 tiró una carta de número 12
-DEBUG: El jugador 1 tiró una carta de número 8
-DEBUG: El jugador 0 tiró una carta de número 9
-DEBUG: El jugador 2 tiró una carta de número 7
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 0 posee 0 puntos.
-DEBUG: El jugador con id 2 posee -5 puntos.
+DEBUG: La ronda es de tipo normal
+DEBUG: El jugador 0 tiró una carta de número 12
+DEBUG: El jugador 1 tiró una carta de número 4
+DEBUG: El jugador 2 tiró una carta de número 10
+DEBUG: El jugador 3 tiró una carta de número 3
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
 DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 3 posee 11 puntos.
+DEBUG: El jugador con id 3 posee 0 puntos.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
 DEBUG: Terminando ronda 1.
 DEBUG: Iniciando ronda 2
 DEBUG: La ronda es de tipo normal
-DEBUG: El jugador 0 tiró una carta de número 9
-DEBUG: El jugador 1 tiró una carta de número 8
-DEBUG: El jugador 3 tiró una carta de número 9
-DEBUG: Los jugadores con ids [3, 0] ganan 5 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 16 puntos.
-DEBUG: El jugador con id 2 posee -5 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 5 puntos.
+DEBUG: El jugador 0 tiró una carta de número 8
+DEBUG: El jugador 1 tiró una carta de número 13
+DEBUG: El jugador 2 tiró una carta de número 3
+DEBUG: El jugador 3 tiró una carta de número 7
+DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 3 posee 0 puntos.
+DEBUG: El jugador con id 1 posee 10 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
 DEBUG: Terminando ronda 2.
 DEBUG: Iniciando ronda 3
 DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 3 tiró una carta de número 1
-DEBUG: El jugador 1 tiró una carta de número 3
-DEBUG: El jugador 0 tiró una carta de número 4
-DEBUG: El jugador 2 tiró una carta de número 10
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: El jugador 1 tiró una carta de número 2
+DEBUG: El jugador 0 tiró una carta de número 11
+DEBUG: El jugador 2 tiró una carta de número 12
+DEBUG: El jugador 3 tiró una carta de número 10
+DEBUG: Ronda rústica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
 DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 17 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 5 puntos.
+DEBUG: El jugador con id 3 posee -5 puntos.
+DEBUG: El jugador con id 1 posee 11 puntos.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 2 posee 10 puntos.
 DEBUG: Terminando ronda 3.
 DEBUG: Iniciando ronda 4
-DEBUG: La ronda es de tipo rústica
+DEBUG: La ronda es de tipo normal
 DEBUG: El jugador 0 tiró una carta de número 5
-DEBUG: El jugador 1 tiró una carta de número 1
-DEBUG: El jugador 3 tiró una carta de número 13
-DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 22 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 6 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
+DEBUG: El jugador 1 tiró una carta de número 5
+DEBUG: El jugador 2 tiró una carta de número 8
+DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 2 posee 20 puntos.
+DEBUG: El jugador con id 3 posee -5 puntos.
+DEBUG: El jugador con id 1 posee 11 puntos.
 DEBUG: Terminando ronda 4.
 DEBUG: Iniciando ronda 5
 DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 0 tiró una carta de número 8
+DEBUG: El jugador 0 tiró una carta de número 10
 DEBUG: El jugador 1 tiró una carta de número 11
-DEBUG: El jugador 2 tiró una carta de número 13
+DEBUG: El jugador 3 tiró una carta de número 11
+DEBUG: El jugador 2 tiró una carta de número 7
 DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 22 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
-DEBUG: El jugador con id 0 posee 7 puntos.
+DEBUG: Los jugadores con ids [3, 1] ganan 5 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 1 posee 16 puntos.
+DEBUG: El jugador con id 0 posee 11 puntos.
+DEBUG: El jugador con id 3 posee 0 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
 DEBUG: Terminando ronda 5.
 DEBUG: Iniciando ronda 6
 DEBUG: La ronda es de tipo normal
-DEBUG: El jugador 0 tiró una carta de número 5
-DEBUG: El jugador 1 tiró una carta de número 1
-DEBUG: El jugador 3 tiró una carta de número 9
-DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 32 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 7 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
+DEBUG: El jugador 0 tiró una carta de número 8
+DEBUG: El jugador 1 tiró una carta de número 13
+DEBUG: El jugador 3 tiró una carta de número 3
+DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 0 posee 11 puntos.
+DEBUG: El jugador con id 3 posee 0 puntos.
+DEBUG: El jugador con id 1 posee 26 puntos.
 DEBUG: Terminando ronda 6.
 DEBUG: Iniciando ronda 7
 DEBUG: La ronda es de tipo normal
-DEBUG: El jugador 0 tiró una carta de número 2
+DEBUG: El jugador 0 tiró una carta de número 12
 DEBUG: El jugador 1 tiró una carta de número 3
-DEBUG: El jugador 2 tiró una carta de número 3
-DEBUG: El jugador 3 tiró una carta de número 1
-DEBUG: Los jugadores con ids [2, 1] ganan 5 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 2 posee 10 puntos.
-DEBUG: El jugador con id 1 posee 5 puntos.
-DEBUG: El jugador con id 0 posee 7 puntos.
-DEBUG: El jugador con id 3 posee 32 puntos.
+DEBUG: El jugador 2 tiró una carta de número 1
+DEBUG: El jugador 3 tiró una carta de número 2
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 3 posee 0 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 1 posee 26 puntos.
 DEBUG: Terminando ronda 7.
 DEBUG: Iniciando ronda 8
-DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 3 tiró una carta de número 2
-DEBUG: El jugador 1 tiró una carta de número 6
-DEBUG: El jugador 0 tiró una carta de número 11
+DEBUG: La ronda es de tipo normal
+DEBUG: El jugador 0 tiró una carta de número 4
+DEBUG: El jugador 1 tiró una carta de número 2
 DEBUG: El jugador 2 tiró una carta de número 7
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 1 posee 5 puntos.
-DEBUG: El jugador con id 0 posee 17 puntos.
-DEBUG: El jugador con id 3 posee 33 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
+DEBUG: El jugador 3 tiró una carta de número 12
+DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 1 posee 26 puntos.
+DEBUG: El jugador con id 3 posee 10 puntos.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
 DEBUG: Terminando ronda 8.
 DEBUG: Iniciando ronda 9
-DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 0 tiró una carta de número 7
-DEBUG: El jugador 1 tiró una carta de número 4
-DEBUG: El jugador 3 tiró una carta de número 8
-DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: La ronda es de tipo normal
+DEBUG: El jugador 0 tiró una carta de número 4
+DEBUG: El jugador 1 tiró una carta de número 5
+DEBUG: El jugador 2 tiró una carta de número 1
+DEBUG: El jugador 3 tiró una carta de número 11
 DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 0 posee 18 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
-DEBUG: El jugador con id 1 posee 5 puntos.
-DEBUG: El jugador con id 3 posee 38 puntos.
+DEBUG: El jugador con id 3 posee 20 puntos.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 1 posee 26 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
 DEBUG: Terminando ronda 9.
 DEBUG: Iniciando ronda 10
 DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 0 tiró una carta de número 6
+DEBUG: El jugador 0 tiró una carta de número 13
+DEBUG: El jugador 2 tiró una carta de número 4
 DEBUG: El jugador 1 tiró una carta de número 7
-DEBUG: El jugador 2 tiró una carta de número 5
+DEBUG: El jugador 3 tiró una carta de número 1
 DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 1 posee 15 puntos.
-DEBUG: El jugador con id 3 posee 38 puntos.
-DEBUG: El jugador con id 0 posee 19 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 3 posee 15 puntos.
+DEBUG: El jugador con id 0 posee 32 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 1 posee 26 puntos.
 DEBUG: Terminando ronda 10.
 DEBUG: Iniciando ronda 11
 DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 3 tiró una carta de número 5
-DEBUG: El jugador 1 tiró una carta de número 12
-DEBUG: El jugador 0 tiró una carta de número 11
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 1 posee 25 puntos.
-DEBUG: El jugador con id 0 posee 14 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 3 posee 39 puntos.
+DEBUG: El jugador 1 tiró una carta de número 5
+DEBUG: El jugador 0 tiró una carta de número 9
+DEBUG: El jugador 2 tiró una carta de número 9
+DEBUG: Ronda rústica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [2, 0] ganan 5 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 3 posee 15 puntos.
+DEBUG: El jugador con id 0 posee 37 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 1 posee 27 puntos.
 DEBUG: Terminando ronda 11.
 DEBUG: Iniciando ronda 12
 DEBUG: La ronda es de tipo normal
-DEBUG: El jugador 1 tiró una carta de número 12
-DEBUG: El jugador 2 tiró una carta de número 2
+DEBUG: El jugador 0 tiró una carta de número 13
+DEBUG: El jugador 1 tiró una carta de número 6
 DEBUG: El jugador 3 tiró una carta de número 6
-DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 39 puntos.
-DEBUG: El jugador con id 0 posee 14 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 1 posee 35 puntos.
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 3 posee 15 puntos.
+DEBUG: El jugador con id 1 posee 27 puntos.
+DEBUG: El jugador con id 0 posee 47 puntos.
 DEBUG: Terminando ronda 12.
 DEBUG: Iniciando ronda 13
-DEBUG: La ronda es de tipo normal
-DEBUG: El jugador 0 tiró una carta de número 10
-DEBUG: El jugador 1 tiró una carta de número 4
-DEBUG: El jugador 2 tiró una carta de número 6
-DEBUG: El jugador 3 tiró una carta de número 2
-DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 39 puntos.
-DEBUG: El jugador con id 0 posee 24 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 1 posee 35 puntos.
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 2 tiró una carta de número 9
+DEBUG: El jugador 0 tiró una carta de número 9
+DEBUG: El jugador 1 tiró una carta de número 6
+DEBUG: El jugador 3 tiró una carta de número 1
+DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [0, 2] ganan 5 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 2 posee 21 puntos.
+DEBUG: El jugador con id 1 posee 27 puntos.
+DEBUG: El jugador con id 3 posee 10 puntos.
+DEBUG: El jugador con id 0 posee 52 puntos.
 DEBUG: Terminando ronda 13.

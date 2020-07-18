@@ -69,7 +69,7 @@ fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HandOutcom
 
     let max_card: Card = signed_cards.last().unwrap().card;
     let mut i = signed_cards.len() - 1;
-    while i >= 0 && signed_cards[i].card.number == max_card.number {
+    while signed_cards[i].card.number == max_card.number {
         hand_outcome.players_with_max_card.push(signed_cards[i].player_signature);
         if i == 0{
             break;
