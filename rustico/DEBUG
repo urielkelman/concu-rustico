@@ -1,126 +1,391 @@
 DEBUG: Inicio del logfile
 DEBUG: Cartas sin usar 0
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: jugador 2 quiere bajar la barrera
 DEBUG: Iniciando ronda 1
-DEBUG: La ronda es de tipo rústica
-DEBUG: player 3 tira su 1 carta
-DEBUG: El jugador 3 tiró una carta de número 2
-DEBUG: El jugador 0 tiró una carta de número 11
-DEBUG: El jugador 1 tiró una carta de número 2
-DEBUG: El jugador 2 tiró una carta de número 12
-DEBUG: player 0 tira su 1 carta
-DEBUG: player 1 tira su 1 carta
-DEBUG: player 2 tira su 1 carta
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 1.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 0 tiró una carta de número 7
+DEBUG: El jugador 1 tiró su carta número 1.
+DEBUG: El jugador 1 tiró una carta de número 4
+DEBUG: jugador 1 suelta el turno
+DEBUG: El jugador 2 tiró su carta número 1.
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 2 tiró una carta de número 2
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 12
+DEBUG: El jugador 3 tiró su carta número 1.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
 DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 3 posee 1 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
+DEBUG: El jugador con id 3 posee 10 puntos.
 DEBUG: El jugador con id 0 posee 0 puntos.
-DEBUG: Player 3 still has 12 cards to play
-DEBUG: Player 2 still has 12 cards to play
-DEBUG: Player 0 still has 12 cards to play
-DEBUG: Player 1 still has 12 cards to play
+DEBUG: El jugador con id 3 aún tiene 12 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 12 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 12 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 12 cartas por jugar
 DEBUG: Terminando ronda 1.
 DEBUG: Iniciando ronda 2
-DEBUG: La ronda es de tipo rústica
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 2.
 DEBUG: El jugador 0 tiró una carta de número 6
-DEBUG: El jugador 1 tiró una carta de número 7
-DEBUG: El jugador 3 tiró una carta de número 12
-DEBUG: player 1 tira su 2 carta
-DEBUG: player 3 tira su 2 carta
-DEBUG: player 0 tira su 2 carta
-DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 6 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
-DEBUG: El jugador con id 0 posee 1 puntos.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 1 tiró su carta número 2.
+DEBUG: El jugador 1 tiró una carta de número 1
+DEBUG: jugador 1 suelta el turno
+DEBUG: El jugador 2 tiró su carta número 2.
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 2 tiró una carta de número 12
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 3 tiró su carta número 2.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 2
+DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 0 puntos.
+DEBUG: El jugador con id 2 posee 10 puntos.
 DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: Player 3 still has 11 cards to play
-DEBUG: Player 2 still has 12 cards to play
-DEBUG: Player 0 still has 11 cards to play
-DEBUG: Player 1 still has 11 cards to play
+DEBUG: El jugador con id 3 posee 10 puntos.
+DEBUG: El jugador con id 3 aún tiene 11 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 11 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 11 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 11 cartas por jugar
 DEBUG: Terminando ronda 2.
 DEBUG: Iniciando ronda 3
-DEBUG: La ronda es de tipo normal
-DEBUG: El jugador 0 tiró una carta de número 13
-DEBUG: El jugador 1 tiró una carta de número 6
-DEBUG: El jugador 2 tiró una carta de número 1
-DEBUG: player 0 tira su 3 carta
-DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: player 2 tira su 2 carta
-DEBUG: El jugador con id 0 posee 11 puntos.
-DEBUG: El jugador con id 3 posee 6 puntos.
-DEBUG: El jugador con id 2 posee 5 puntos.
-DEBUG: Player 3 still has 11 cards to play
-DEBUG: Player 2 still has 11 cards to play
-DEBUG: Player 0 still has 10 cards to play
-DEBUG: Player 1 still has 10 cards to play
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 0 tiró su carta número 3.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 1 tiró una carta de número 11
+DEBUG: El jugador 1 tiró su carta número 3.
+DEBUG: El jugador 2 tiró su carta número 3.
+DEBUG: El jugador 3 tiró su carta número 3.
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 2 suelta el turno
+DEBUG: El jugador 0 tiró una carta de número 8
+DEBUG: El jugador 2 tiró una carta de número 7
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 10
+DEBUG: Ronda rústica: el jugador con id 1 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 0 puntos.
+DEBUG: El jugador con id 3 posee 5 puntos.
+DEBUG: El jugador con id 1 posee 11 puntos.
+DEBUG: El jugador con id 2 posee 10 puntos.
+DEBUG: El jugador con id 3 aún tiene 10 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 10 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 10 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 10 cartas por jugar
 DEBUG: Terminando ronda 3.
 DEBUG: Iniciando ronda 4
-DEBUG: La ronda es de tipo rústica
-DEBUG: player 1 tira su 3 carta
-DEBUG: player 3 tira su 3 carta
-DEBUG: El jugador 3 tiró una carta de número 9
-DEBUG: player 1 tira su 4 carta
-DEBUG: player 2 tira su 3 carta
-DEBUG: player 0 tira su 4 carta
-DEBUG: El jugador 1 tiró una carta de número 9
-DEBUG: El jugador 2 tiró una carta de número 11
-DEBUG: El jugador 0 tiró una carta de número 6
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 7 puntos.
-DEBUG: El jugador con id 0 posee 6 puntos.
-DEBUG: El jugador con id 2 posee 15 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: Player 3 still has 10 cards to play
-DEBUG: Player 2 still has 10 cards to play
-DEBUG: Player 0 still has 9 cards to play
-DEBUG: Player 1 still has 9 cards to play
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 4.
+DEBUG: jugador 0 suelta el turno
+DEBUG: El jugador 0 tiró una carta de número 11
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 1 tiró su carta número 4.
+DEBUG: jugador 1 suelta el turno
+DEBUG: El jugador 1 tiró una carta de número 8
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 2 tiró una carta de número 4
+DEBUG: El jugador 2 tiró su carta número 4.
+DEBUG: jugador 2 suelta el turno
+DEBUG: El jugador 3 se encuentra suspendido, no tira carta en esta ronda.
+DEBUG: jugador 3 suelta el turno
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 1 posee 11 puntos.
+DEBUG: El jugador con id 3 posee 5 puntos.
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador con id 2 posee 10 puntos.
+DEBUG: El jugador con id 3 aún tiene 10 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 9 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 9 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 9 cartas por jugar
 DEBUG: Terminando ronda 4.
 DEBUG: Iniciando ronda 5
-DEBUG: La ronda es de tipo rústica
-DEBUG: player 3 tira su 4 carta
-DEBUG: El jugador 3 tiró una carta de número 10
-DEBUG: player 2 tira su 4 carta
-DEBUG: El jugador 2 tiró una carta de número 11
-DEBUG: player 1 tira su 5 carta
-DEBUG: El jugador 1 tiró una carta de número 1
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 1 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 3 posee 8 puntos.
-DEBUG: El jugador con id 0 posee 6 puntos.
-DEBUG: El jugador con id 1 posee -5 puntos.
-DEBUG: El jugador con id 2 posee 25 puntos.
-DEBUG: Player 3 still has 9 cards to play
-DEBUG: Player 2 still has 9 cards to play
-DEBUG: Player 0 still has 9 cards to play
-DEBUG: Player 1 still has 8 cards to play
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró una carta de número 2
+DEBUG: El jugador 1 tiró su carta número 5.
+DEBUG: jugador 1 suelta el turno
+DEBUG: El jugador 1 tiró una carta de número 13
+DEBUG: El jugador 0 tiró su carta número 5.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 2 tiró su carta número 5.
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 2 tiró una carta de número 9
+DEBUG: jugador 2 suelta el turno
+DEBUG: El jugador 3 tiró su carta número 4.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 12
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 2 posee 10 puntos.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 1 posee 21 puntos.
+DEBUG: El jugador con id 3 posee 5 puntos.
+DEBUG: El jugador con id 3 aún tiene 9 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 8 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 8 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 8 cartas por jugar
 DEBUG: Terminando ronda 5.
 DEBUG: Iniciando ronda 6
-DEBUG: La ronda es de tipo rústica
-DEBUG: player 3 tira su 5 carta
-DEBUG: El jugador 3 tiró una carta de número 10
-DEBUG: player 2 tira su 5 carta
-DEBUG: player 0 tira su 5 carta
-DEBUG: El jugador 2 tiró una carta de número 4
-DEBUG: El jugador 0 tiró una carta de número 1
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 0 posee 1 puntos.
-DEBUG: El jugador con id 1 posee -5 puntos.
-DEBUG: El jugador con id 2 posee 25 puntos.
-DEBUG: El jugador con id 3 posee 19 puntos.
-DEBUG: Player 3 still has 8 cards to play
-DEBUG: Player 2 still has 8 cards to play
-DEBUG: Player 0 still has 8 cards to play
-DEBUG: Player 1 still has 8 cards to play
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 6.
+DEBUG: El jugador 0 tiró una carta de número 5
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 1 tiró su carta número 6.
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 1 tiró una carta de número 1
+DEBUG: El jugador 2 tiró una carta de número 8
+DEBUG: El jugador 2 tiró su carta número 6.
+DEBUG: El jugador 3 tiró su carta número 5.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 1
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: Los jugadores con ids [2] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 3 posee 5 puntos.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 1 posee 21 puntos.
+DEBUG: El jugador con id 2 posee 20 puntos.
+DEBUG: El jugador con id 3 aún tiene 8 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 7 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 7 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 7 cartas por jugar
 DEBUG: Terminando ronda 6.
 DEBUG: Iniciando ronda 7
 DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 7.
+DEBUG: El jugador 0 tiró una carta de número 6
+DEBUG: El jugador 1 tiró una carta de número 11
+DEBUG: El jugador 1 tiró su carta número 7.
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 2 tiró su carta número 7.
+DEBUG: jugador 0 suelta el turno
+DEBUG: El jugador 2 tiró una carta de número 8
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 13
+DEBUG: El jugador 3 tiró su carta número 6.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 3 posee 15 puntos.
+DEBUG: El jugador con id 2 posee 20 puntos.
+DEBUG: El jugador con id 1 posee 21 puntos.
+DEBUG: El jugador con id 3 aún tiene 7 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 6 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 6 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 6 cartas por jugar
+DEBUG: Terminando ronda 7.
+DEBUG: Iniciando ronda 8
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 1 tiró su carta número 8.
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 3 tiró su carta número 7.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador 2 tiró su carta número 8.
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 0 tiró una carta de número 9
+DEBUG: El jugador 1 tiró una carta de número 5
+DEBUG: El jugador 0 tiró su carta número 8.
+DEBUG: El jugador 3 tiró una carta de número 5
+DEBUG: El jugador 2 tiró una carta de número 7
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 3 posee 15 puntos.
+DEBUG: El jugador con id 1 posee 21 puntos.
+DEBUG: El jugador con id 3 aún tiene 6 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 5 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 5 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 5 cartas por jugar
+DEBUG: Terminando ronda 8.
+DEBUG: Iniciando ronda 9
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 3 tiró su carta número 8.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador 1 tiró su carta número 9.
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 0 tiró su carta número 9.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 10
+DEBUG: El jugador 2 se encuentra suspendido, no tira carta en esta ronda.
+DEBUG: El jugador 1 tiró una carta de número 3
+DEBUG: jugador 2 suelta el turno
+DEBUG: El jugador 0 tiró una carta de número 13
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 3 posee 16 puntos.
+DEBUG: El jugador con id 1 posee 21 puntos.
+DEBUG: El jugador con id 0 posee 26 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 3 aún tiene 5 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 4 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 5 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 4 cartas por jugar
+DEBUG: Terminando ronda 9.
+DEBUG: Iniciando ronda 10
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 se encuentra suspendido, no tira carta en esta ronda.
+DEBUG: El jugador 1 tiró su carta número 10.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: jugador 1 suelta el turno
+DEBUG: El jugador 1 tiró una carta de número 10
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 2 tiró una carta de número 10
+DEBUG: El jugador 2 tiró su carta número 9.
+DEBUG: El jugador 3 tiró su carta número 9.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 3 tiró una carta de número 3
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: Los jugadores con ids [2, 1] ganan 5 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 26 puntos.
+DEBUG: El jugador con id 3 posee 16 puntos.
+DEBUG: El jugador con id 2 posee 20 puntos.
+DEBUG: El jugador con id 1 posee 26 puntos.
+DEBUG: El jugador con id 3 aún tiene 4 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 4 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 4 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 3 cartas por jugar
+DEBUG: Terminando ronda 10.
+DEBUG: Iniciando ronda 11
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 3 tiró su carta número 10.
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: El jugador 0 tiró su carta número 10.
+DEBUG: El jugador 1 tiró su carta número 11.
+DEBUG: El jugador 2 tiró su carta número 10.
+DEBUG: El jugador 3 tiró una carta de número 6
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: jugador 0 suelta el turno
+DEBUG: El jugador 1 tiró una carta de número 11
+DEBUG: El jugador 2 tiró una carta de número 5
+DEBUG: El jugador 0 tiró una carta de número 9
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 0 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 3 posee 17 puntos.
+DEBUG: El jugador con id 2 posee 20 puntos.
+DEBUG: El jugador con id 1 posee 36 puntos.
+DEBUG: El jugador con id 3 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 2 cartas por jugar
+DEBUG: Terminando ronda 11.
+DEBUG: Iniciando ronda 12
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 0 se encuentra suspendido, no tira carta en esta ronda.
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 2 tiró su carta número 11.
+DEBUG: El jugador 3 tiró una carta de número 3
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 1 tiró su carta número 12.
+DEBUG: jugador 1 suelta el turno
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: El jugador 1 tiró una carta de número 13
+DEBUG: El jugador 3 tiró su carta número 11.
+DEBUG: El jugador 2 tiró una carta de número 2
+DEBUG: jugador 3 suelta el turno
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [1] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 1 posee 46 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 3 posee 18 puntos.
+DEBUG: El jugador con id 3 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 1 cartas por jugar
+DEBUG: Terminando ronda 12.
+DEBUG: Iniciando ronda 13
+DEBUG: La ronda es de tipo normal
+DEBUG: D: Coordinador quiere bajar la barrera
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 11.
+DEBUG: El jugador 0 tiró una carta de número 4
+DEBUG: jugador 0 suelta el turno
+DEBUG: jugador 0 quiere bajar la barrera
+DEBUG: El jugador 1 tiró su carta número 13.
+DEBUG: El jugador 1 tiró una carta de número 1
+DEBUG: jugador 1 suelta el turno
+DEBUG: El jugador 2 se encuentra suspendido, no tira carta en esta ronda.
+DEBUG: jugador 2 suelta el turno
+DEBUG: jugador 2 quiere bajar la barrera
+DEBUG: El jugador 3 tiró su carta número 12.
+DEBUG: jugador 3 suelta el turno
+DEBUG: El jugador 3 tiró una carta de número 9
+DEBUG: jugador 1 quiere bajar la barrera
+DEBUG: jugador 3 quiere bajar la barrera
+DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 1 posee 46 puntos.
+DEBUG: El jugador con id 2 posee 15 puntos.
+DEBUG: El jugador con id 0 posee 21 puntos.
+DEBUG: El jugador con id 3 posee 28 puntos.
+DEBUG: El jugador con id 3 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 0 cartas por jugar
+DEBUG: Terminando ronda 13.

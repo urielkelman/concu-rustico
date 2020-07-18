@@ -28,6 +28,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
     let mut cards_thrown: usize = 0;
 
     loop {
+        debug(log.clone(), format!("jugador {} quiere bajar la barrera", player_id));
         players_barrier.wait();
 
         let mut round_player_flags = lock.lock().unwrap();
@@ -44,8 +45,11 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
             card_sender.send(SignedCard { card: deck[cards_thrown], player_signature: player_id }).unwrap();
             cards_thrown += 1;
             debug(log.clone(), format!("El jugador {} tiró su carta número {}.", player_id, cards_thrown));
+        } else {
+            debug(log.clone(), format!("El jugador {} se encuentra suspendido, no tira carta en esta ronda.", player_id));
         }
 
         (*round_player_flags).is_my_turn = false;
+        debug(log.clone(), format!("jugador {} suelta el turno", player_id));
     }
 }

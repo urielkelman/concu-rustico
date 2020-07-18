@@ -161,6 +161,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
 
         if normal {
+            debug(logfile.clone(), "D: Coordinador quiere bajar la barrera".to_string());
             starting_barrier.wait();
             debug(logfile.clone(), "El coordinador se prepara para recibir las cartas en \
             el orden de las agujas del reloj".to_string());
