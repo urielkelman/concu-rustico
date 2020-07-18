@@ -162,6 +162,8 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
 
         if normal {
             starting_barrier.wait();
+            debug(logfile.clone(), "El coordinador se prepara para recibir las cartas en \
+            el orden de las agujas del reloj".to_string());
         }
 
         for p in 0..players {
@@ -230,6 +232,10 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             }
             let current_cards = available_cards_by_user.get(&p).unwrap();
             available_cards_by_user.insert(p, current_cards - 1);
+        }
+
+        for (player, cards) in available_cards_by_user.iter() {
+            debug(logfile.clone(), format!("El jugador con id {} aún tiene {} cartas por jugar", player, cards));
         }
 
         suspended_player = hand_outcome.slowest_player;

@@ -36,13 +36,14 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, players_barrier: Ar
             round_player_flags = cvar.wait(round_player_flags).unwrap();
         }
 
-        if (*round_player_flags).game_ended || cards_thrown == deck.len() {
+        if (*round_player_flags).game_ended {
             break;
         }
 
         if (*round_player_flags).can_throw_card {
             card_sender.send(SignedCard { card: deck[cards_thrown], player_signature: player_id }).unwrap();
             cards_thrown += 1;
+            debug(log.clone(), format!("El jugador {} tiró su carta número {}.", player_id, cards_thrown));
         }
 
         (*round_player_flags).is_my_turn = false;
