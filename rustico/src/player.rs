@@ -28,7 +28,6 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: A
     let mut cards_thrown: usize = 0;
 
     loop {
-        debug(log.clone(), format!("jugador {} quiere bajar la barrera", player_id));
         starting_barrier.wait();
 
         let mut round_player_flags = lock.lock().unwrap();
@@ -51,7 +50,6 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: A
         }
 
         (*round_player_flags).is_my_turn = false;
-        debug(log.clone(), format!("jugador {} suelta el turno  ", player_id));
         ending_barrier.wait();
     }
 }

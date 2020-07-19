@@ -161,7 +161,6 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
 
         if normal {
-            debug(logfile.clone(), "D: Coordinador quiere bajar la barrera".to_string());
             starting_barrier.wait();
             debug(logfile.clone(), "El coordinador se prepara para recibir las cartas en \
             el orden de las agujas del reloj".to_string());
@@ -185,13 +184,12 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             }
 
             if suspended_player.is_some() && suspended_player.unwrap() == p {
-                println!("1: Se ejecuta continue para jugador suspendido {}", p);
                 continue;
             }
 
             if normal {
                 let signed_card = card_receiver.recv().unwrap();
-                debug(logfile.clone(), format!("El jugador {} tiró una carta de número {}",
+                debug(logfile.clone(), format!("Se recibio del jugador {} carta de número {}",
                                                 signed_card.player_signature,
                                                 signed_card.card.number));
                 cards.push(signed_card);
@@ -202,11 +200,10 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
             starting_barrier.wait();
             for p in 0..players{
                 if suspended_player.is_some() && suspended_player.unwrap() == p {
-                    println!("2: Se ejecuta continue para jugador suspendido {}", p);
                     continue;
                 }
                 let signed_card = card_receiver.recv().unwrap();
-                debug(logfile.clone(), format!("El jugador {} tiró una carta de número {}",
+                debug(logfile.clone(), format!("Se recibio del jugador {} carta de número {}",
                                                 signed_card.player_signature,
                                                 signed_card.card.number));
                 cards.push(signed_card);
@@ -244,9 +241,6 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
 
         suspended_player = hand_outcome.slowest_player;
-        if suspended_player.is_some() {
-            println!("Suspendido: {} en ronda {}.", hand_outcome.slowest_player.unwrap(), round);
-        }
         debug(logfile.clone(), format!("Terminando ronda {}.", round));
         round += 1;
 
