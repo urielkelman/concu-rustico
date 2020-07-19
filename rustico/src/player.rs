@@ -17,8 +17,8 @@ pub struct RoundPlayerFlags {
     pub game_ended: bool
 }
 
-pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: Arc<Barrier>,
-              ending_barrier: Arc<Barrier>, rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<RoundPlayerFlags>, Condvar)>,
+pub fn player(log: LogFile, card_sender: Sender<SignedCard>, barrier: Arc<Barrier>,
+              rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<RoundPlayerFlags>, Condvar)>,
               player_id: i32) {
 
     let deck = receive_deck(rx_deck);
@@ -28,7 +28,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: A
     let mut cards_thrown: usize = 0;
 
     loop {
-        starting_barrier.wait();
+        barrier.wait();
 
         let mut round_player_flags = lock.lock().unwrap();
 
@@ -37,7 +37,7 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: A
         }
 
         if (*round_player_flags).game_ended {
-            ending_barrier.wait();
+            barrier.wait();
             break;
         }
 
@@ -50,6 +50,6 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, starting_barrier: A
         }
 
         (*round_player_flags).is_my_turn = false;
-        ending_barrier.wait();
+        barrier.wait();
     }
 }

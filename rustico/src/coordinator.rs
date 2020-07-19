@@ -133,7 +133,7 @@ fn determine_hand_outcome(cards: Vec<SignedCard>, normal: bool) -> HandOutcome {
 }
 
 pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<SignedCard>,
-                   starting_barrier: Arc<Barrier>, ending_barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
+                   barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
                    cond_vars_players: HashMap<i32, Arc<(Mutex<RoundPlayerFlags>, Condvar)>>) {
     let (deck_size, unused_cards) = deal_cards_to_players(players, tx_deck);
     debug(logfile.clone(), format!("Cartas sin usar {}", unused_cards));
@@ -161,7 +161,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
 
         if normal {
-            starting_barrier.wait();
+            barrier.wait();
             debug(logfile.clone(), "El coordinador se prepara para recibir las cartas en \
             el orden de las agujas del reloj".to_string());
         }
@@ -197,7 +197,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
 
         if !normal{
-            starting_barrier.wait();
+            barrier.wait();
             for p in 0..players{
                 if suspended_player.is_some() && suspended_player.unwrap() == p {
                     continue;
@@ -244,12 +244,12 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         debug(logfile.clone(), format!("Terminando ronda {}.", round));
         round += 1;
 
-        ending_barrier.wait();
+        barrier.wait();
     }
 
     // Ultima iteracion para avisar el fin
 
-    starting_barrier.wait();
+    barrier.wait();
 
     for p in 0..players {
         {
@@ -261,7 +261,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         }
     }
 
-    ending_barrier.wait();
+    barrier.wait();
 }
 
 #[cfg(test)]
