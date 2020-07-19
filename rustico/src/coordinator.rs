@@ -337,7 +337,7 @@ mod tests {
         assert_eq!(hand_outcome.players_with_max_card.len(), 1);
         assert!(hand_outcome.players_with_max_card.contains(&0));
         assert!(!hand_outcome.slowest_player.is_some());
-        assert!(!hand_outcome.slowest_player.is_some());
+        assert!(!hand_outcome.fastest_player.is_some());
     }
 
     #[test]
@@ -355,7 +355,7 @@ mod tests {
         assert_eq!(hand_outcome.players_with_max_card.len(), 1);
         assert!(hand_outcome.players_with_max_card.contains(&1));
         assert!(!hand_outcome.slowest_player.is_some());
-        assert!(!hand_outcome.slowest_player.is_some());
+        assert!(!hand_outcome.fastest_player.is_some());
     }
 
     #[test]
@@ -371,15 +371,43 @@ mod tests {
                                      player_signature: 3});
         let hand_outcome = calculate_normal_hand_points(signed_cards);
         assert_eq!(hand_outcome.earned_points.len(), 4);
-        assert_eq!(hand_outcome.max_card_points, 5);
+        assert_eq!(hand_outcome.max_card_points, POINTS_MAX_CARD/2);
         assert_eq!(*hand_outcome.earned_points.get(&(0 as i32)).unwrap(), 0);
-        assert_eq!(*hand_outcome.earned_points.get(&(1 as i32)).unwrap(), 5);
+        assert_eq!(*hand_outcome.earned_points.get(&(1 as i32)).unwrap(), POINTS_MAX_CARD/2);
         assert_eq!(*hand_outcome.earned_points.get(&(2 as i32)).unwrap(), 0);
-        assert_eq!(*hand_outcome.earned_points.get(&(3 as i32)).unwrap(), 5);
+        assert_eq!(*hand_outcome.earned_points.get(&(3 as i32)).unwrap(), POINTS_MAX_CARD/2);
         assert_eq!(hand_outcome.players_with_max_card.len(), 2);
         assert!(hand_outcome.players_with_max_card.contains(&1));
         assert!(hand_outcome.players_with_max_card.contains(&3));
         assert!(!hand_outcome.slowest_player.is_some());
-        assert!(!hand_outcome.slowest_player.is_some());
+        assert!(!hand_outcome.fastest_player.is_some());
+    }
+
+    #[test]
+    fn test_calculate_rustic_hand_points_two_winners() {
+        let mut signed_cards = vec![];
+        signed_cards.push(SignedCard{card: Card{number: 10, suit:CardSuit::Spades},
+                                     player_signature: 1});
+        signed_cards.push(SignedCard{card: Card{number: 11, suit:CardSuit::Hearts},
+                                     player_signature: 2});
+        signed_cards.push(SignedCard{card: Card{number: 1, suit:CardSuit::Diamonds},
+                                     player_signature: 0});
+        signed_cards.push(SignedCard{card: Card{number: 11, suit:CardSuit::Clubs},
+                                     player_signature: 3});
+        let hand_outcome = calculate_rustic_hand_points(signed_cards);
+        assert_eq!(hand_outcome.earned_points.len(), 4);
+        assert_eq!(hand_outcome.max_card_points, POINTS_MAX_CARD/2);
+        assert!(hand_outcome.slowest_player.is_some());
+        assert!(hand_outcome.fastest_player.is_some());
+        assert_eq!(hand_outcome.slowest_player.unwrap(), 3);
+        assert_eq!(hand_outcome.fastest_player.unwrap(), 1);
+        assert_eq!(*hand_outcome.earned_points.get(&(0 as i32)).unwrap(), 0);
+        assert_eq!(*hand_outcome.earned_points.get(&(1 as i32)).unwrap(), POINTS_FASTER_PLAYER);
+        assert_eq!(*hand_outcome.earned_points.get(&(2 as i32)).unwrap(), POINTS_MAX_CARD/2);
+        assert_eq!(*hand_outcome.earned_points.get(&(3 as i32)).unwrap(), POINTS_MAX_CARD/2 + POINTS_SLOWER_PLAYER);
+        assert_eq!(hand_outcome.players_with_max_card.len(), 2);
+        assert!(hand_outcome.players_with_max_card.contains(&2));
+        assert!(hand_outcome.players_with_max_card.contains(&3));
+
     }
 }
