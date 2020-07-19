@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet};
 use rand::Rng;
 
 use crate::signed_card::SignedCard;
-use crate::cards::{Card, CardSuit, random_full_deck};
+use crate::cards::{Card, random_full_deck};
 use crate::player::RoundPlayerFlags;
 
 use crate::logger::{LogFile, info, debug};
@@ -263,7 +263,9 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
 
     barrier.wait();
 
-    // TODO: say who win
+    let (winner, winner_points) = points_by_user.iter().max_by_key(|k| k.1).unwrap();
+
+    info(logfile.clone(), format!("El ganador es {} con {} puntos", winner, winner_points))?;
 
     return Ok(());
 }
@@ -272,6 +274,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
 mod tests {
     // Note this useful idiom: importing names from outer (for mod tests) scope.
     use super::*;
+    use crate::cards::CardSuit;
 
     #[test]
     fn test_empty_points_map_len() {
@@ -408,6 +411,5 @@ mod tests {
         assert_eq!(hand_outcome.players_with_max_card.len(), 2);
         assert!(hand_outcome.players_with_max_card.contains(&2));
         assert!(hand_outcome.players_with_max_card.contains(&3));
-
     }
 }
