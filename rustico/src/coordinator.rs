@@ -7,7 +7,7 @@ use crate::signed_card::SignedCard;
 use crate::cards::{Card, random_full_deck};
 use crate::player::RoundPlayerFlags;
 
-use crate::logger::{LogFile, info, debug, error};
+use crate::logger::{LogFile, info, debug};
 
 const FRENCH_DECK_SIZE :i32 = 52;
 
@@ -86,10 +86,11 @@ fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HandOutcom
     return hand_outcome;
 }
 
-fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>){
+fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>) -> std::io::Result<()>{
     for (user, points ) in points_by_user {
-        debug(logfile.clone(), format!("El jugador con id {} posee {} puntos.", user, points));
+        debug(logfile.clone(), format!("El jugador con id {} posee {} puntos.", user, points))?;
     }
+    return Ok(());
 }
 
 
@@ -134,9 +135,9 @@ fn determine_hand_outcome(cards: Vec<SignedCard>, normal: bool) -> HandOutcome {
 
 pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<SignedCard>,
                    barrier: Arc<Barrier>, tx_deck :Sender<Vec<Card>>,
-                   cond_vars_players: HashMap<i32, Arc<(Mutex<RoundPlayerFlags>, Condvar)>>) {
+                   cond_vars_players: HashMap<i32, Arc<(Mutex<RoundPlayerFlags>, Condvar)>>) -> std::io::Result<()>{
     let (deck_size, unused_cards) = deal_cards_to_players(players, tx_deck);
-    debug(logfile.clone(), format!("Cartas sin usar {}", unused_cards));
+    info(logfile.clone(), format!("Hay {} del mazo sin usar", unused_cards))?;
 
     let mut rng = rand::thread_rng();
 
@@ -148,28 +149,28 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
     let mut suspended_player: Option<i32> = None;
 
     while keep_playing(&available_cards_by_user){
-        debug(logfile.clone(), format!("Iniciando ronda {}", round));
+        info(logfile.clone(), format!("Iniciando ronda {}", round))?;
 
         let mut cards = Vec::new();
 
         let normal: bool = rng.gen();
 
         if normal {
-            debug(logfile.clone(), "La ronda es de tipo normal".to_string());
+            debug(logfile.clone(), "La ronda es de tipo normal".to_string())?;
         } else {
-            debug(logfile.clone(), "La ronda es de tipo rústica".to_string());
+            debug(logfile.clone(), "La ronda es de tipo rústica".to_string())?;
         }
 
         if normal {
             barrier.wait();
             debug(logfile.clone(), "El coordinador se prepara para recibir las cartas en \
-            el orden de las agujas del reloj".to_string());
+            el orden de las agujas del reloj".to_string())?;
         }
 
         for p in 0..players {
-            /// Scope artificial creado para poder liberar el lock que se adquiere al obtener la variable
-            /// can_play. Si no generamos este scope, el player nunca puede adquirir el lock y hay un deadlock
-            /// cuando intenta adquirir el valor de la condition variable.
+            /* Scope artificial creado para poder liberar el lock que se adquiere al obtener la variable
+            can_play. Si no generamos este scope, el player nunca puede adquirir el lock y hay un deadlock
+            cuando intenta adquirir el valor de la condition variable. */
             {
                 let cond_var = cond_vars_players.get(&p).unwrap();
                 let (lock, cvar) = &**cond_var;
@@ -191,7 +192,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
                 let signed_card = card_receiver.recv().unwrap();
                 debug(logfile.clone(), format!("Se recibio del jugador {} carta de número {}",
                                                 signed_card.player_signature,
-                                                signed_card.card.number));
+                                                signed_card.card.number))?;
                 cards.push(signed_card);
             }
         }
@@ -205,7 +206,7 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
                 let signed_card = card_receiver.recv().unwrap();
                 debug(logfile.clone(), format!("Se recibio del jugador {} carta de número {}",
                                                 signed_card.player_signature,
-                                                signed_card.card.number));
+                                                signed_card.card.number))?;
                 cards.push(signed_card);
             }
         }
@@ -215,33 +216,32 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
         points_by_user = merge_points_hashmaps(points_by_user, hand_outcome.earned_points);
         if hand_outcome.fastest_player.is_some(){
             debug(logfile.clone(),format!("Ronda rústica: el jugador con id {} ha sido el mas rapido, \
-            sumando {} puntos", hand_outcome.fastest_player.unwrap(), POINTS_FASTER_PLAYER));
+            sumando {} puntos", hand_outcome.fastest_player.unwrap(), POINTS_FASTER_PLAYER))?;
         }
 
         if hand_outcome.slowest_player.is_some(){
             debug(logfile.clone(),format!("Ronda rústica: el jugador con id {} ha sido el mas lento, \
-            restando {} puntos y perdiendo su proximo turno", hand_outcome.slowest_player.unwrap(), POINTS_SLOWER_PLAYER));
+            restando {} puntos y perdiendo su proximo turno", hand_outcome.slowest_player.unwrap(), POINTS_SLOWER_PLAYER))?;
         }
 
         debug(logfile.clone(), format!("Los jugadores con ids {:?} ganan {} puntos por tirar la máxima carta de la ronda.",
-                hand_outcome.players_with_max_card, hand_outcome.max_card_points));
+                hand_outcome.players_with_max_card, hand_outcome.max_card_points))?;
 
-        register_current_points(logfile.clone(), &points_by_user);
+        register_current_points(logfile.clone(), &points_by_user)?;
 
         for p in 0..players {
             if suspended_player.is_some() && suspended_player.unwrap() == p {
                 continue;
             }
-            let current_cards = available_cards_by_user.get(&p).unwrap();
+            let current_cards = *available_cards_by_user.get(&p).unwrap();
             available_cards_by_user.insert(p, current_cards - 1);
         }
 
         for (player, cards) in available_cards_by_user.iter() {
-            debug(logfile.clone(), format!("El jugador con id {} aún tiene {} cartas por jugar", player, cards));
+            debug(logfile.clone(), format!("El jugador con id {} aún tiene {} cartas por jugar", player, cards))?;
         }
 
         suspended_player = hand_outcome.slowest_player;
-        debug(logfile.clone(), format!("Terminando ronda {}.", round));
         round += 1;
 
         barrier.wait();
@@ -262,6 +262,10 @@ pub fn coordinator(logfile: LogFile, players: i32, card_receiver: Receiver<Signe
     }
 
     barrier.wait();
+
+    // TODO: say who win
+
+    return Ok(());
 }
 
 #[cfg(test)]

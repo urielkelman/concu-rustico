@@ -11,9 +11,6 @@ use std::sync::{mpsc, Barrier, Arc, Mutex, Condvar};
 use std::thread;
 use player::player;
 use coordinator::coordinator;
-use std::fs::{self, File};
-use std::io::prelude::*;
-use std::io::LineWriter;
 use std::io::{Error, ErrorKind};
 use crate::logger::{create_logfile, debug, info, error, LogFile};
 use crate::player::RoundPlayerFlags;
@@ -24,7 +21,7 @@ fn check_player_quantity(players: i32) -> bool {
     return players >= 4 && players % 2 == 0
 }
 
-fn set_up_threads(players: i32, log_file: LogFile) {
+fn set_up_threads(players: i32, log_file: LogFile) -> std::io::Result<()> {
     let barrier = Arc::new(Barrier::new((players + 1) as usize));
 
     let (tx_card, rx_card) = mpsc::channel();
@@ -34,6 +31,7 @@ fn set_up_threads(players: i32, log_file: LogFile) {
     let mut threads = Vec::new();
     let mut cond_vars_players = HashMap::new();
 
+    info(log_file.clone(), "Esperando jugadores".to_string())?;
     for p in 0..players {
         let tx_clone_player = mpsc::Sender::clone(&tx_card);
         let barrier_clone = barrier.clone();
@@ -44,20 +42,22 @@ fn set_up_threads(players: i32, log_file: LogFile) {
         let cond_var_pair_clone = cond_var_pair.clone();
         threads.push(thread::spawn(move || {
             player(log_file_clone, tx_clone_player, barrier_clone,
-                   shared_rx_deck_clone, cond_var_pair, p);
+                   shared_rx_deck_clone, cond_var_pair, p).unwrap();
         }));
         cond_vars_players.insert(p, cond_var_pair_clone);
     }
 
-
+    info(log_file.clone(), "Iniciando coordinador".to_string())?;
     threads.push(thread::spawn(move || {
         coordinator(log_file, players, rx_card, barrier,
-                    tx_deck, cond_vars_players)
+                    tx_deck, cond_vars_players).unwrap();
     }));
 
     for thread in threads {
         thread.join().unwrap();
     }
+
+    return Ok(())
 }
 
 fn main() -> std::io::Result<()> {
@@ -86,12 +86,12 @@ fn main() -> std::io::Result<()> {
 
 
     if !check_player_quantity(players){
-        println!("ERROR: Number of players should be greater or equal than four and divisible by two.");
+        error(logfile.clone(), "ERROR: Number of players should be greater or equal than four and divisible by two.".to_string())?;
         return Err(Error::new(ErrorKind::Other,
                             "Number of players should be greater or equal than four and divisible by two."));
     }
 
-    set_up_threads(players, logfile);
+    set_up_threads(players, logfile)?;
 
     return Ok(());
 }

@@ -5,7 +5,7 @@ use std::sync::{Barrier, Arc, Mutex, Condvar};
 use crate::signed_card::SignedCard;
 use crate::cards::Card;
 
-use crate::logger::{LogFile, info, debug, error};
+use crate::logger::{LogFile, info, debug};
 
 fn receive_deck(rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>) -> Vec<Card> {
     return rx_deck.lock().unwrap().recv().unwrap();
@@ -19,7 +19,7 @@ pub struct RoundPlayerFlags {
 
 pub fn player(log: LogFile, card_sender: Sender<SignedCard>, barrier: Arc<Barrier>,
               rx_deck: Arc<Mutex<Receiver<Vec<Card>>>>, cond_var: Arc<(Mutex<RoundPlayerFlags>, Condvar)>,
-              player_id: i32) {
+              player_id: i32) -> std::io::Result<()>{
 
     let deck = receive_deck(rx_deck);
 
@@ -38,15 +38,16 @@ pub fn player(log: LogFile, card_sender: Sender<SignedCard>, barrier: Arc<Barrie
 
         if (*round_player_flags).game_ended {
             barrier.wait();
-            break;
+            info(log.clone(), format!("El jugador {} abandona la partida.", player_id))?;
+            return Ok(());
         }
 
         if (*round_player_flags).can_throw_card {
             card_sender.send(SignedCard { card: deck[cards_thrown], player_signature: player_id }).unwrap();
             cards_thrown += 1;
-            debug(log.clone(), format!("El jugador {} tiró su carta número {}.", player_id, cards_thrown));
+            debug(log.clone(), format!("El jugador {} tiró su carta número {}.", player_id, cards_thrown))?;
         } else {
-            debug(log.clone(), format!("El jugador {} se encuentra suspendido, no tira carta en esta ronda.", player_id));
+            debug(log.clone(), format!("El jugador {} se encuentra suspendido, no tira carta en esta ronda.", player_id))?;
         }
 
         (*round_player_flags).is_my_turn = false;
