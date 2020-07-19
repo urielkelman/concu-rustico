@@ -1,10 +1,10 @@
 use std::sync::mpsc::{Receiver, Sender};
 use std::sync::{Barrier, Arc, Mutex, Condvar};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use rand::Rng;
 
 use crate::signed_card::SignedCard;
-use crate::cards::{Card, random_full_deck};
+use crate::cards::{Card, CardSuit, random_full_deck};
 use crate::player::RoundPlayerFlags;
 
 use crate::logger::{LogFile, info, debug};
@@ -18,7 +18,7 @@ const POINTS_MAX_CARD :i32 = 10;
 struct HandOutcome {
     pub earned_points: HashMap<i32, i32>,
     pub max_card_points: i32,
-    pub players_with_max_card: Vec<i32>,
+    pub players_with_max_card: HashSet<i32>,
     pub slowest_player: Option<i32>,
     pub fastest_player: Option<i32>
 }
@@ -62,7 +62,7 @@ fn merge_points_hashmaps(map1: HashMap<i32, i32>, map2: HashMap<i32, i32>) -> Ha
 
 fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HandOutcome{
     let mut hand_outcome = HandOutcome{earned_points: player_fixed_values_map(signed_cards.len() as i32, 0),
-                                        max_card_points: 0, players_with_max_card: Vec::new(),
+                                        max_card_points: 0, players_with_max_card: HashSet::new(),
                                         slowest_player: None, fastest_player: None};
 
     signed_cards.sort_by(|a, b| a.card.number.cmp(&b.card.number));
@@ -70,7 +70,7 @@ fn calculate_normal_hand_points(mut signed_cards: Vec<SignedCard>) -> HandOutcom
     let max_card: Card = signed_cards.last().unwrap().card;
     let mut i = signed_cards.len() - 1;
     while signed_cards[i].card.number == max_card.number {
-        hand_outcome.players_with_max_card.push(signed_cards[i].player_signature);
+        hand_outcome.players_with_max_card.insert(signed_cards[i].player_signature);
         if i == 0{
             break;
         }
@@ -96,7 +96,7 @@ fn register_current_points(logfile: LogFile, points_by_user: &HashMap<i32, i32>)
 
 fn calculate_rustic_hand_points(signed_cards: Vec<SignedCard>) -> HandOutcome {
     let mut hand_outcome = HandOutcome{earned_points: player_fixed_values_map(signed_cards.len() as i32, 0),
-                                        max_card_points: 0, players_with_max_card: Vec::new(),
+                                        max_card_points: 0, players_with_max_card: HashSet::new(),
                                         slowest_player: None, fastest_player: None};
 
     let first_player = signed_cards.first().unwrap();
@@ -323,5 +323,63 @@ mod tests {
         assert!(keep_playing(&map));
         map.insert(3,0);
         assert!(!keep_playing(&map));
+    }
+
+    #[test]
+    fn test_calculate_normal_hand_points_one_player() {
+        let mut signed_cards = vec![];
+        signed_cards.push(SignedCard{card: Card{number: 10, suit:CardSuit::Spades},
+                                     player_signature: 0});
+        let hand_outcome = calculate_normal_hand_points(signed_cards);
+        assert_eq!(hand_outcome.earned_points.len(), 1);
+        assert_eq!(*hand_outcome.earned_points.get(&(0 as i32)).unwrap(), POINTS_MAX_CARD as i32);
+        assert_eq!(hand_outcome.max_card_points, 10);
+        assert_eq!(hand_outcome.players_with_max_card.len(), 1);
+        assert!(hand_outcome.players_with_max_card.contains(&0));
+        assert!(!hand_outcome.slowest_player.is_some());
+        assert!(!hand_outcome.slowest_player.is_some());
+    }
+
+    #[test]
+    fn test_calculate_normal_hand_points_two_players() {
+        let mut signed_cards = vec![];
+        signed_cards.push(SignedCard{card: Card{number: 10, suit:CardSuit::Spades},
+                                     player_signature: 0});
+        signed_cards.push(SignedCard{card: Card{number: 11, suit:CardSuit::Spades},
+                                     player_signature: 1});
+        let hand_outcome = calculate_normal_hand_points(signed_cards);
+        assert_eq!(hand_outcome.earned_points.len(), 2);
+        assert_eq!(*hand_outcome.earned_points.get(&(0 as i32)).unwrap(), 0);
+        assert_eq!(*hand_outcome.earned_points.get(&(1 as i32)).unwrap(), POINTS_MAX_CARD as i32);
+        assert_eq!(hand_outcome.max_card_points, 10);
+        assert_eq!(hand_outcome.players_with_max_card.len(), 1);
+        assert!(hand_outcome.players_with_max_card.contains(&1));
+        assert!(!hand_outcome.slowest_player.is_some());
+        assert!(!hand_outcome.slowest_player.is_some());
+    }
+
+    #[test]
+    fn test_calculate_normal_hand_points_two_winners() {
+        let mut signed_cards = vec![];
+        signed_cards.push(SignedCard{card: Card{number: 10, suit:CardSuit::Spades},
+                                     player_signature: 0});
+        signed_cards.push(SignedCard{card: Card{number: 11, suit:CardSuit::Hearts},
+                                     player_signature: 1});
+        signed_cards.push(SignedCard{card: Card{number: 1, suit:CardSuit::Diamonds},
+                                     player_signature: 2});
+        signed_cards.push(SignedCard{card: Card{number: 11, suit:CardSuit::Clubs},
+                                     player_signature: 3});
+        let hand_outcome = calculate_normal_hand_points(signed_cards);
+        assert_eq!(hand_outcome.earned_points.len(), 4);
+        assert_eq!(hand_outcome.max_card_points, 5);
+        assert_eq!(*hand_outcome.earned_points.get(&(0 as i32)).unwrap(), 0);
+        assert_eq!(*hand_outcome.earned_points.get(&(1 as i32)).unwrap(), 5);
+        assert_eq!(*hand_outcome.earned_points.get(&(2 as i32)).unwrap(), 0);
+        assert_eq!(*hand_outcome.earned_points.get(&(3 as i32)).unwrap(), 5);
+        assert_eq!(hand_outcome.players_with_max_card.len(), 2);
+        assert!(hand_outcome.players_with_max_card.contains(&1));
+        assert!(hand_outcome.players_with_max_card.contains(&3));
+        assert!(!hand_outcome.slowest_player.is_some());
+        assert!(!hand_outcome.slowest_player.is_some());
     }
 }

@@ -4,221 +4,221 @@ INFO: Iniciando coordinador
 INFO: Hay 4 del mazo sin usar
 INFO: Iniciando ronda 1
 DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 5 tiró su carta número 1.
 DEBUG: El jugador 6 tiró su carta número 1.
-DEBUG: El jugador 1 tiró su carta número 1.
-DEBUG: El jugador 7 tiró su carta número 1.
-DEBUG: El jugador 11 tiró su carta número 1.
-DEBUG: El jugador 8 tiró su carta número 1.
-DEBUG: El jugador 3 tiró su carta número 1.
 DEBUG: El jugador 10 tiró su carta número 1.
+DEBUG: El jugador 11 tiró su carta número 1.
+DEBUG: El jugador 1 tiró su carta número 1.
+DEBUG: El jugador 4 tiró su carta número 1.
+DEBUG: El jugador 5 tiró su carta número 1.
+DEBUG: El jugador 8 tiró su carta número 1.
 DEBUG: El jugador 2 tiró su carta número 1.
+DEBUG: El jugador 3 tiró su carta número 1.
 DEBUG: El jugador 9 tiró su carta número 1.
 DEBUG: El jugador 0 tiró su carta número 1.
-DEBUG: El jugador 4 tiró su carta número 1.
-DEBUG: Se recibio del jugador 3 carta de número 11
-DEBUG: Se recibio del jugador 6 carta de número 9
-DEBUG: Se recibio del jugador 5 carta de número 4
-DEBUG: Se recibio del jugador 1 carta de número 1
-DEBUG: Se recibio del jugador 7 carta de número 4
-DEBUG: Se recibio del jugador 9 carta de número 2
-DEBUG: Se recibio del jugador 11 carta de número 3
+DEBUG: Se recibio del jugador 6 carta de número 11
+DEBUG: El jugador 7 tiró su carta número 1.
+DEBUG: Se recibio del jugador 10 carta de número 7
+DEBUG: Se recibio del jugador 11 carta de número 2
 DEBUG: Se recibio del jugador 0 carta de número 5
-DEBUG: Se recibio del jugador 8 carta de número 10
-DEBUG: Se recibio del jugador 2 carta de número 7
-DEBUG: Se recibio del jugador 10 carta de número 11
+DEBUG: Se recibio del jugador 2 carta de número 9
+DEBUG: Se recibio del jugador 1 carta de número 1
+DEBUG: Se recibio del jugador 3 carta de número 3
+DEBUG: Se recibio del jugador 4 carta de número 5
+DEBUG: Se recibio del jugador 7 carta de número 4
+DEBUG: Se recibio del jugador 5 carta de número 11
+DEBUG: Se recibio del jugador 9 carta de número 12
+DEBUG: Se recibio del jugador 8 carta de número 7
+DEBUG: Ronda rústica: el jugador con id 6 ha sido el mas rapido, sumando 1 puntos
+DEBUG: Ronda rústica: el jugador con id 8 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
+DEBUG: Los jugadores con ids [9] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 4 posee 0 puntos.
+DEBUG: El jugador con id 8 posee -5 puntos.
+DEBUG: El jugador con id 6 posee 1 puntos.
+DEBUG: El jugador con id 5 posee 0 puntos.
+DEBUG: El jugador con id 9 posee 10 puntos.
+DEBUG: El jugador con id 10 posee 0 puntos.
+DEBUG: El jugador con id 11 posee 0 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
+DEBUG: El jugador con id 1 posee 0 puntos.
+DEBUG: El jugador con id 3 posee 0 puntos.
+DEBUG: El jugador con id 0 posee 0 puntos.
+DEBUG: El jugador con id 7 posee 0 puntos.
+DEBUG: El jugador con id 8 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 3 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 7 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 9 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 6 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 10 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 11 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 5 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 4 aún tiene 3 cartas por jugar
+INFO: Iniciando ronda 2
+DEBUG: La ronda es de tipo normal
+DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: El jugador 0 tiró su carta número 2.
+DEBUG: Se recibio del jugador 0 carta de número 10
+DEBUG: El jugador 1 tiró su carta número 2.
+DEBUG: Se recibio del jugador 1 carta de número 12
+DEBUG: El jugador 2 tiró su carta número 2.
+DEBUG: Se recibio del jugador 2 carta de número 10
+DEBUG: El jugador 3 tiró su carta número 2.
+DEBUG: Se recibio del jugador 3 carta de número 13
+DEBUG: El jugador 4 tiró su carta número 2.
+DEBUG: Se recibio del jugador 4 carta de número 9
+DEBUG: El jugador 5 tiró su carta número 2.
+DEBUG: Se recibio del jugador 5 carta de número 3
+DEBUG: El jugador 6 tiró su carta número 2.
+DEBUG: Se recibio del jugador 6 carta de número 4
+DEBUG: Se recibio del jugador 7 carta de número 7
+DEBUG: El jugador 7 tiró su carta número 2.
+DEBUG: El jugador 8 se encuentra suspendido, no tira carta en esta ronda.
+DEBUG: Se recibio del jugador 9 carta de número 6
+DEBUG: El jugador 9 tiró su carta número 2.
+DEBUG: El jugador 10 tiró su carta número 2.
+DEBUG: Se recibio del jugador 10 carta de número 5
+DEBUG: El jugador 11 tiró su carta número 2.
+DEBUG: Se recibio del jugador 11 carta de número 11
+DEBUG: Los jugadores con ids [3] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 8 posee -5 puntos.
+DEBUG: El jugador con id 6 posee 1 puntos.
+DEBUG: El jugador con id 7 posee 0 puntos.
+DEBUG: El jugador con id 5 posee 0 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
+DEBUG: El jugador con id 4 posee 0 puntos.
+DEBUG: El jugador con id 9 posee 10 puntos.
+DEBUG: El jugador con id 10 posee 0 puntos.
+DEBUG: El jugador con id 1 posee 0 puntos.
+DEBUG: El jugador con id 0 posee 0 puntos.
+DEBUG: El jugador con id 11 posee 0 puntos.
+DEBUG: El jugador con id 3 posee 10 puntos.
+DEBUG: El jugador con id 8 aún tiene 3 cartas por jugar
+DEBUG: El jugador con id 1 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 3 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 7 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 9 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 6 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 10 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 11 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 5 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 2 cartas por jugar
+DEBUG: El jugador con id 4 aún tiene 2 cartas por jugar
+INFO: Iniciando ronda 3
+DEBUG: La ronda es de tipo rústica
+DEBUG: El jugador 3 tiró su carta número 3.
+DEBUG: El jugador 2 tiró su carta número 3.
+DEBUG: El jugador 1 tiró su carta número 3.
+DEBUG: El jugador 5 tiró su carta número 3.
+DEBUG: El jugador 9 tiró su carta número 3.
+DEBUG: El jugador 8 tiró su carta número 2.
+DEBUG: El jugador 6 tiró su carta número 3.
+DEBUG: El jugador 11 tiró su carta número 3.
+DEBUG: El jugador 7 tiró su carta número 3.
+DEBUG: Se recibio del jugador 3 carta de número 8
+DEBUG: El jugador 10 tiró su carta número 3.
+DEBUG: El jugador 0 tiró su carta número 3.
+DEBUG: Se recibio del jugador 2 carta de número 11
+DEBUG: El jugador 4 tiró su carta número 3.
+DEBUG: Se recibio del jugador 1 carta de número 3
+DEBUG: Se recibio del jugador 8 carta de número 1
+DEBUG: Se recibio del jugador 5 carta de número 4
+DEBUG: Se recibio del jugador 6 carta de número 9
+DEBUG: Se recibio del jugador 9 carta de número 1
+DEBUG: Se recibio del jugador 10 carta de número 5
+DEBUG: Se recibio del jugador 0 carta de número 13
+DEBUG: Se recibio del jugador 11 carta de número 2
+DEBUG: Se recibio del jugador 7 carta de número 2
 DEBUG: Se recibio del jugador 4 carta de número 8
 DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas rapido, sumando 1 puntos
 DEBUG: Ronda rústica: el jugador con id 4 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [10, 3] ganan 5 puntos por tirar la máxima carta de la ronda.
+DEBUG: Los jugadores con ids [0] ganan 10 puntos por tirar la máxima carta de la ronda.
+DEBUG: El jugador con id 6 posee 1 puntos.
+DEBUG: El jugador con id 10 posee 0 puntos.
+DEBUG: El jugador con id 8 posee -5 puntos.
+DEBUG: El jugador con id 9 posee 10 puntos.
+DEBUG: El jugador con id 5 posee 0 puntos.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 11 posee 0 puntos.
+DEBUG: El jugador con id 3 posee 11 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
 DEBUG: El jugador con id 4 posee -5 puntos.
-DEBUG: El jugador con id 9 posee 0 puntos.
-DEBUG: El jugador con id 1 posee 0 puntos.
 DEBUG: El jugador con id 7 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 0 puntos.
-DEBUG: El jugador con id 10 posee 5 puntos.
-DEBUG: El jugador con id 8 posee 0 puntos.
-DEBUG: El jugador con id 3 posee 6 puntos.
-DEBUG: El jugador con id 5 posee 0 puntos.
-DEBUG: El jugador con id 11 posee 0 puntos.
-DEBUG: El jugador con id 6 posee 0 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 7 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 0 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 1 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 4 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 6 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 8 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 2 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 11 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 3 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 5 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 9 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 10 aún tiene 3 cartas por jugar
-INFO: Iniciando ronda 2
-DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 7 tiró su carta número 2.
-DEBUG: El jugador 8 tiró su carta número 2.
-DEBUG: Se recibio del jugador 7 carta de número 4
-DEBUG: Se recibio del jugador 8 carta de número 1
-DEBUG: Se recibio del jugador 0 carta de número 13
-DEBUG: Se recibio del jugador 6 carta de número 12
-DEBUG: Se recibio del jugador 10 carta de número 13
-DEBUG: Se recibio del jugador 11 carta de número 12
-DEBUG: Se recibio del jugador 5 carta de número 5
-DEBUG: Se recibio del jugador 1 carta de número 3
-DEBUG: Se recibio del jugador 2 carta de número 8
-DEBUG: Se recibio del jugador 9 carta de número 8
-DEBUG: Se recibio del jugador 3 carta de número 11
-DEBUG: Ronda rústica: el jugador con id 7 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 3 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [10, 0] ganan 5 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 7 posee 1 puntos.
-DEBUG: El jugador con id 3 posee 1 puntos.
-DEBUG: El jugador con id 8 posee 0 puntos.
-DEBUG: El jugador con id 10 posee 10 puntos.
-DEBUG: El jugador con id 11 posee 0 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
 DEBUG: El jugador con id 1 posee 0 puntos.
-DEBUG: El jugador con id 9 posee 0 puntos.
-DEBUG: El jugador con id 5 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 5 puntos.
-DEBUG: El jugador con id 4 posee -5 puntos.
-DEBUG: El jugador con id 6 posee 0 puntos.
-DEBUG: El jugador con id 7 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 0 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 1 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 4 aún tiene 3 cartas por jugar
-DEBUG: El jugador con id 6 aún tiene 2 cartas por jugar
 DEBUG: El jugador con id 8 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 2 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 11 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 3 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 5 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 9 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 10 aún tiene 2 cartas por jugar
-DEBUG: El jugador 0 tiró su carta número 2.
-DEBUG: El jugador 6 tiró su carta número 2.
-DEBUG: El jugador 10 tiró su carta número 2.
-DEBUG: El jugador 4 se encuentra suspendido, no tira carta en esta ronda.
-DEBUG: El jugador 11 tiró su carta número 2.
-DEBUG: El jugador 2 tiró su carta número 2.
-DEBUG: El jugador 3 tiró su carta número 2.
-DEBUG: El jugador 1 tiró su carta número 2.
-DEBUG: El jugador 5 tiró su carta número 2.
-DEBUG: El jugador 9 tiró su carta número 2.
-INFO: Iniciando ronda 3
-DEBUG: La ronda es de tipo rústica
-DEBUG: El jugador 5 tiró su carta número 3.
-DEBUG: El jugador 9 tiró su carta número 3.
-DEBUG: El jugador 8 tiró su carta número 3.
-DEBUG: El jugador 6 tiró su carta número 3.
-DEBUG: El jugador 4 tiró su carta número 2.
-DEBUG: El jugador 0 tiró su carta número 3.
-DEBUG: El jugador 11 tiró su carta número 3.
-DEBUG: El jugador 10 tiró su carta número 3.
-DEBUG: Se recibio del jugador 9 carta de número 4
-DEBUG: El jugador 2 tiró su carta número 3.
-DEBUG: El jugador 7 tiró su carta número 3.
-DEBUG: El jugador 1 tiró su carta número 3.
-DEBUG: El jugador 3 se encuentra suspendido, no tira carta en esta ronda.
-DEBUG: Se recibio del jugador 5 carta de número 6
-DEBUG: Se recibio del jugador 8 carta de número 7
-DEBUG: Se recibio del jugador 7 carta de número 3
-DEBUG: Se recibio del jugador 6 carta de número 10
-DEBUG: Se recibio del jugador 0 carta de número 6
-DEBUG: Se recibio del jugador 11 carta de número 11
-DEBUG: Se recibio del jugador 1 carta de número 13
-DEBUG: Se recibio del jugador 4 carta de número 9
-DEBUG: Se recibio del jugador 10 carta de número 7
-DEBUG: Se recibio del jugador 2 carta de número 13
-DEBUG: Ronda rústica: el jugador con id 9 ha sido el mas rapido, sumando 1 puntos
-DEBUG: Ronda rústica: el jugador con id 2 ha sido el mas lento, restando -5 puntos y perdiendo su proximo turno
-DEBUG: Los jugadores con ids [2, 1] ganan 5 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 6 posee 0 puntos.
-DEBUG: El jugador con id 1 posee 5 puntos.
-DEBUG: El jugador con id 8 posee 0 puntos.
-DEBUG: El jugador con id 11 posee 0 puntos.
-DEBUG: El jugador con id 7 posee 1 puntos.
-DEBUG: El jugador con id 9 posee 1 puntos.
-DEBUG: El jugador con id 0 posee 5 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 10 posee 10 puntos.
-DEBUG: El jugador con id 3 posee 1 puntos.
-DEBUG: El jugador con id 5 posee 0 puntos.
-DEBUG: El jugador con id 4 posee -5 puntos.
-DEBUG: El jugador con id 7 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 0 aún tiene 1 cartas por jugar
 DEBUG: El jugador con id 1 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 4 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 6 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 8 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 2 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 11 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 3 aún tiene 2 cartas por jugar
-DEBUG: El jugador con id 5 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 3 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 7 aún tiene 1 cartas por jugar
 DEBUG: El jugador con id 9 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 6 aún tiene 1 cartas por jugar
 DEBUG: El jugador con id 10 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 11 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 5 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 1 cartas por jugar
+DEBUG: El jugador con id 4 aún tiene 1 cartas por jugar
 INFO: Iniciando ronda 4
 DEBUG: La ronda es de tipo normal
 DEBUG: El coordinador se prepara para recibir las cartas en el orden de las agujas del reloj
+DEBUG: Se recibio del jugador 0 carta de número 12
 DEBUG: El jugador 0 tiró su carta número 4.
-DEBUG: Se recibio del jugador 0 carta de número 3
 DEBUG: Se recibio del jugador 1 carta de número 10
 DEBUG: El jugador 1 tiró su carta número 4.
-DEBUG: El jugador 2 se encuentra suspendido, no tira carta en esta ronda.
-DEBUG: Se recibio del jugador 3 carta de número 5
-DEBUG: El jugador 3 tiró su carta número 3.
-DEBUG: El jugador 4 tiró su carta número 3.
-DEBUG: Se recibio del jugador 4 carta de número 2
+DEBUG: Se recibio del jugador 2 carta de número 10
+DEBUG: El jugador 2 tiró su carta número 4.
+DEBUG: El jugador 3 tiró su carta número 4.
+DEBUG: Se recibio del jugador 3 carta de número 6
+DEBUG: El jugador 4 se encuentra suspendido, no tira carta en esta ronda.
 DEBUG: El jugador 5 tiró su carta número 4.
-DEBUG: Se recibio del jugador 5 carta de número 10
-DEBUG: Se recibio del jugador 6 carta de número 5
+DEBUG: Se recibio del jugador 5 carta de número 7
 DEBUG: El jugador 6 tiró su carta número 4.
+DEBUG: Se recibio del jugador 6 carta de número 13
 DEBUG: El jugador 7 tiró su carta número 4.
-DEBUG: Se recibio del jugador 7 carta de número 9
-DEBUG: El jugador 8 tiró su carta número 4.
-DEBUG: Se recibio del jugador 8 carta de número 2
+DEBUG: Se recibio del jugador 7 carta de número 4
+DEBUG: El jugador 8 tiró su carta número 3.
+DEBUG: Se recibio del jugador 8 carta de número 1
 DEBUG: El jugador 9 tiró su carta número 4.
-DEBUG: Se recibio del jugador 9 carta de número 6
+DEBUG: Se recibio del jugador 9 carta de número 2
 DEBUG: El jugador 10 tiró su carta número 4.
-DEBUG: Se recibio del jugador 10 carta de número 12
-DEBUG: Se recibio del jugador 11 carta de número 2
+DEBUG: Se recibio del jugador 10 carta de número 6
 DEBUG: El jugador 11 tiró su carta número 4.
-DEBUG: Los jugadores con ids [10] ganan 10 puntos por tirar la máxima carta de la ronda.
-DEBUG: El jugador con id 7 posee 1 puntos.
-DEBUG: El jugador con id 3 posee 1 puntos.
-DEBUG: El jugador con id 10 posee 20 puntos.
-DEBUG: El jugador con id 1 posee 5 puntos.
-DEBUG: El jugador con id 8 posee 0 puntos.
+DEBUG: Se recibio del jugador 11 carta de número 8
+DEBUG: Los jugadores con ids [6] ganan 10 puntos por tirar la máxima carta de la ronda.
 DEBUG: El jugador con id 5 posee 0 puntos.
-DEBUG: El jugador con id 9 posee 1 puntos.
-DEBUG: El jugador con id 2 posee 0 puntos.
-DEBUG: El jugador con id 0 posee 5 puntos.
+DEBUG: El jugador con id 7 posee 0 puntos.
+DEBUG: El jugador con id 1 posee 0 puntos.
 DEBUG: El jugador con id 4 posee -5 puntos.
-DEBUG: El jugador con id 6 posee 0 puntos.
+DEBUG: El jugador con id 6 posee 11 puntos.
+DEBUG: El jugador con id 2 posee 0 puntos.
+DEBUG: El jugador con id 10 posee 0 puntos.
+DEBUG: El jugador con id 9 posee 10 puntos.
+DEBUG: El jugador con id 8 posee -5 puntos.
 DEBUG: El jugador con id 11 posee 0 puntos.
-DEBUG: El jugador con id 7 aún tiene 0 cartas por jugar
-DEBUG: El jugador con id 0 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 3 posee 11 puntos.
+DEBUG: El jugador con id 0 posee 10 puntos.
+DEBUG: El jugador con id 8 aún tiene 1 cartas por jugar
 DEBUG: El jugador con id 1 aún tiene 0 cartas por jugar
-DEBUG: El jugador con id 4 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 6 aún tiene 0 cartas por jugar
-DEBUG: El jugador con id 8 aún tiene 0 cartas por jugar
-DEBUG: El jugador con id 2 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 11 aún tiene 0 cartas por jugar
-DEBUG: El jugador con id 3 aún tiene 1 cartas por jugar
-DEBUG: El jugador con id 5 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 3 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 0 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 7 aún tiene 0 cartas por jugar
 DEBUG: El jugador con id 9 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 6 aún tiene 0 cartas por jugar
 DEBUG: El jugador con id 10 aún tiene 0 cartas por jugar
-INFO: El jugador 0 abandona la partida.
-INFO: El jugador 1 abandona la partida.
-INFO: El jugador 10 abandona la partida.
-INFO: El jugador 8 abandona la partida.
-INFO: El jugador 9 abandona la partida.
-INFO: El jugador 3 abandona la partida.
-INFO: El jugador 2 abandona la partida.
-INFO: El jugador 6 abandona la partida.
-INFO: El jugador 4 abandona la partida.
-INFO: El jugador 5 abandona la partida.
+DEBUG: El jugador con id 11 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 5 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 2 aún tiene 0 cartas por jugar
+DEBUG: El jugador con id 4 aún tiene 1 cartas por jugar
 INFO: El jugador 11 abandona la partida.
+INFO: El jugador 0 abandona la partida.
+INFO: El jugador 3 abandona la partida.
+INFO: El jugador 9 abandona la partida.
+INFO: El jugador 8 abandona la partida.
+INFO: El jugador 4 abandona la partida.
+INFO: El jugador 10 abandona la partida.
+INFO: El jugador 1 abandona la partida.
+INFO: El jugador 2 abandona la partida.
+INFO: El jugador 5 abandona la partida.
 INFO: El jugador 7 abandona la partida.
+INFO: El jugador 6 abandona la partida.
